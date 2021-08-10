@@ -1,11 +1,12 @@
 # Jekyll files
-_site/
-.sass-cache/
-.jekyll-cache/
+_site
+.sass-cache
+.jekyll-cache
 .jekyll-metadata
+vendor
+
+# WebStorm project files
+.idea/
 
 # rbenv files
-/.ruby-version
-
-# WebStorm files
-.idea/
+.ruby-version

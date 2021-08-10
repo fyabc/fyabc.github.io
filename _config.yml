@@ -26,3 +26,5 @@ kramdown:
   syntax_highlighter: rouge
 
 # Theme
+
+theme: jekyll-theme-cayman

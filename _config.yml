@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Yang's Personal Home Page
+title: 范阳的个人主页
 email: fyabc@mail.ustc.edu.cn
 description: >- # this means to ignore newlines until "baseurl:"
-  Personal home page of Yang Fan.
+  个人资料、科研、游戏等
 #  Write an awesome description for your new site here. You can edit this
 #  line in _config.yml. It will appear in your document head meta (for
 #  Google search results) and in your feed.xml site description.

@@ -5,4 +5,6 @@ description: 论文笔记与领域总结
 permalink: /research-notes/
 ---
 
-正在完善中。
+1. [AlphaFold2]({% link papers/AlphaFold2.markdown %})
+
+**TODO**：添加文章

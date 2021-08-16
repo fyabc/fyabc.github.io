@@ -9,4 +9,5 @@ vendor
 .idea/
 
 # rbenv files
+Gemfile.lock
 .ruby-version

@@ -22,7 +22,7 @@ categories: [PSP(蛋白质结构预测), MSA(多序列比对), AlphaFold2]
 - Name: Highly accurate protein structure prediction with AlphaFold
 - Author: DeepMind Team
 - Affiliation: DeepMind
-- Published Time: 2021.07.12
+- Published Time: 2021.05.11
 - Accept Time: 2021.07.12
 - Citation: 46 (2021.08.22)
 - Dataset: CASP14

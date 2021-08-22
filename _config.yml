@@ -97,3 +97,5 @@ kramdown:
 
 # My custom variables
 real_username_en: Yang Fan
+
+theme: jekyll-theme-leap-day

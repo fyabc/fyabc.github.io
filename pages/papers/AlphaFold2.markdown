@@ -33,4 +33,6 @@ categories: [PSP(蛋白质结构预测), MSA(多序列比对), AlphaFold2]
 
 ## 代码研究
 
+1. **NOTE**：代码研究基于2021.08.21的代码（commit `cef198e`）。
+
 正在完善中。

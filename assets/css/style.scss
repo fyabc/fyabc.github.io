@@ -12,41 +12,54 @@ h2 {
 }
 
 .wrapper {
-    width:1200px;
+    width:1050px;
 }
 
 nav {
-    margin-left: -890px;
+    margin-left: -780px;
 }
 
 section {
-    width:1140px;
+    width:1000px;
 }
 
 #banner {
-    margin-right: -782px;
+    margin-right: -720px;
 
     .fork {
-        left: 35.6%;
+        position: absolute;
+        left: 37.8%;
+    }
+
+    .btn-home {
+        position: absolute;
+        left: 25.2%;
+    }
+
+    #post-categories {
+        margin: 0;
+        // position: absolute;
+        position: relative;
+        text-align: right;
+        margin-right: 10%;
+        left: 50.2%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
 footer {
-    margin-left: -920px;
-    width: 280px;
-    line-height: 1px;
+    margin-left: -790px;
+    width: 240px;
+    line-height: 6px;
+    // margin-bottom: 1px;
 
     p {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 
 #personal-photo {
     margin-right: 20px;
     width: 155px;
-}
-
-#post-categories {
-    margin-left: 560px;
-    margin-top: 15px;
 }

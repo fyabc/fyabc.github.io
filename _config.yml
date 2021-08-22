@@ -18,10 +18,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: 范阳的个人主页
+title: Yang Fan（范阳）
 email: fyabc@mail.ustc.edu.cn
 description: >- # this means to ignore newlines until "baseurl:"
-  个人资料、科研、游戏等
 #  Write an awesome description for your new site here. You can edit this
 #  line in _config.yml. It will appear in your document head meta (for
 #  Google search results) and in your feed.xml site description.
@@ -32,7 +31,9 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  fyabc
 
 # Build settings
-remote_theme: pages-themes/cayman@v0.2.0
+
+# Remote theme
+remote_theme: pages-themes/leap-day@v0.2.0
 plugins:
   - jekyll-remote-theme # add this line to the plugins list if you already have one
 
@@ -93,3 +94,6 @@ kramdown:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# My custom variables
+real_username_en: Yang Fan

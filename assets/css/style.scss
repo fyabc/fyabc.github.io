@@ -1,0 +1,52 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+p {
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+.wrapper {
+    width:1200px;
+}
+
+nav {
+    margin-left: -890px;
+}
+
+section {
+    width:1140px;
+}
+
+#banner {
+    margin-right: -782px;
+
+    .fork {
+        left: 35.6%;
+    }
+}
+
+footer {
+    margin-left: -920px;
+    width: 280px;
+    line-height: 1px;
+
+    p {
+        font-size: 14px;
+    }
+}
+
+#personal-photo {
+    margin-right: 20px;
+    width: 155px;
+}
+
+#post-categories {
+    margin-left: 560px;
+    margin-top: 15px;
+}

@@ -40,19 +40,3 @@ categories: [PSP(蛋白质结构预测), MSA(多序列比对), AlphaFold2]
 ## 代码实例
 
 详见[proj-misc](https://github.com/fyabc/proj-misc/blob/master/)
-
-1. **2021.08.24**
-
-   1. 根据刚才讨论的paper的思路，我们如果要做Target2Drug forget的话，理想状况的是把所有binding site之外的部分都遗忘掉，可以朝这个方向改进他的模型
-
-   2. 目前Target2Drug的数据现状是数据量小而数据很长，可以考虑进行data augmentation，从一个长序列生成多个短序列作为输入
-
-      1. 简单方法：从序列中的每个氨基酸中sample一个原子的坐标（而不是average），构成新序列
-      2. 其他思路：设计一个generator，输入长序列输出若干短序列，该generator训练目标为：a) 新序列和原序列的recover loss；b) 新序列之间的diversity  
-         然后将这个generator接在transformer前面（generator和transformer一起训练或单独训练）
-
-   3. 在target中起作用的只是binding site那一小部分，而且不同的ligand对应不同的binding site，因此单纯target sequence作为输入可能缺少信息  
-      PDB文件中有binding site的信息，可以利用，作为输入的一部分（以序列中位置的格式）  
-      但是inference的时候没有binding site信息，考虑在inference时候输出所有的binding site和对应的ligand
-   4. 可以利用target的**二级结构**（PDB官网上的`ss_dis.txt`有PDB与二级结构序列的一一对应）作为额外的序列输入
-   5. Drug2Target面临同样的缺少binding site的问题以及信息量的问题，需求pretraining的支持，但问题在于目前的pretraining中缺少binding site的信息，这个问题需要解决

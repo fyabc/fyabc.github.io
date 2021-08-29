@@ -1,0 +1,11 @@
+---
+layout: post
+title: 关于论文
+# description: 
+permalink: /research-misc/about-papers
+categories: [论文写作, 杂项]
+---
+
+1. Regular Paper, Short Paper, Demo Paper 和Poster的区别：<https://www.littlewaterdrop.com/static/zh/cs/paperwriting/faq/paper-types/index.html>
+2. 查询SCI和EI号：**TODO**
+3. 查询期刊JCR分区：**TODO**

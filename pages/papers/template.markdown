@@ -18,11 +18,12 @@ categories: [cat1, cat2, cat3]
 ## 信息
 
 - Name: XXX
+- Abbr: **XXX**
 - Author: XXX
 - Affiliation: XXX
 - Published Time: 20XX.XX.XX
 - Accept Time: 20XX.XX.XX
-- Citation: XXX (Check date)
+- Citation: **XXX** (Check date)
 - Dataset: XXX
 
 ## 文章解读

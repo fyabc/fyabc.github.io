@@ -63,3 +63,12 @@ footer {
     margin-right: 20px;
     width: 155px;
 }
+
+// Set code block font to monospace.
+figure.highlight pre code {
+    font-family: Consolas, 'Courier New', Menlo, Monaco, monospace;
+    
+    span {
+        font-family: Consolas, 'Courier New', Menlo, Monaco, monospace;
+    }
+}

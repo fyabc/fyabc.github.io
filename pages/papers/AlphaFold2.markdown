@@ -25,6 +25,7 @@ categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
 - Affiliation: DeepMind
 - Published Time: 2021.05.11
 - Accept Time: 2021.07.12
+- Meeting: Nature
 - Citation: **46** (2021.08.22)
 - Dataset: CASP14
 
@@ -71,17 +72,18 @@ categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
    2. 图2b显示高骨架准确度情况下，可以得到高**侧链准确度**（指Cα之外的原子）
       1. 在Cα确定的情况下，侧链位置预测主要取决于旋转异构体的扭转角度预测，若预测扭转角度与实际差别小于40度，视为分类正确
    3. 图2c显示预测的**局部距离差异测试** (pLDDT) 置信度可以可靠地预测**Cα局部距离差异测试** (lDDT-Cα) 准确度
-      1. **局部距离差异测试** (predicted Local Distance Difference Test)：**TODO:名词解释**
-      2. **Cα局部距离差异测试** (Cα Local Distance Difference Test)：**TODO:名词解释**
-   4. 图2d显示可以准确估计**全局叠加度量模板建模分数** (global superposition metric template modeling score, TM-score)。
+      1. **局部距离差异测试** (predicted Local Distance Difference Test, **pLDDT**)：**TODO:名词解释**
+      2. **Cα局部距离差异测试** (Cα Local Distance Difference Test, **lDDT-Cα**)：**TODO:名词解释**
+   4. 图2d显示可以准确估计**全局叠加度量模板建模分数** (global superposition metric template modeling score, TM-score (**TODO**: read ref 27))。
 
 ### AlphaFold2 Network
 
 1. ![AlphaFold2模型架构]({% link assets/images/papers/AlphaFold2-ModelArch.png %})
 2. 模型：基于演化、物理和几何约束的新模型结构和训练算法
-   1. **输入特征**：MSA + pairwise features
-      1. 输入人的蛋白质序列，在基因数据集中搜索同源序列并进行MSA，作为MSA输入（使用原始MSA初始化，但对特别深的MSA作特别处理，参见[附录1.2.7](#1.2.7-MSA聚类)）
-      2. 对输入蛋白质序列进行pairing和在结构数据集中搜索模板，作为pairwise features输入（**TODO：详见下文**）
+   1. **输入特征**：MSA表示 + 配对(pairwise)表示
+      1. 输入人的蛋白质序列，在基因数据集中搜索同源序列并进行MSA，作为MSA输入（使用[rawMSA][1]初始化，但对特别深的MSA作特别处理，参见[附录1.2.7](#127-MSA聚类)）
+      2. 对输入蛋白质序列进行配对(pairing)和在结构数据集中搜索模板，作为pairwise features输入
+         1. 配对表示(Pair representation)：将蛋白质结构预测视为3D空间中的图推理问题，其中图的边缘由邻近的残基定义。配对表示的元素编码有关残基之间关系的信息（图3b）
    2. 一种新的**输出表示**和相关的损失函数，可实现准确的端到端结构预测
       1. 具体解释：**TODO**
    3. 新的**等变 (Equivariant) Attention**模型结构
@@ -105,11 +107,50 @@ categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
       1. **打破链原子结构**以允许同时对结构的所有部分进行局部细化
       2. 一个新的**等变Transformer**，允许网络隐式推理未表示的侧链原子
       3. 一个代表残基方向准确性的**损失函数项**
-   4. 详细解读：[附录1.8](#1.8-结构模块)
+   4. 详细解读：[附录1.8](#18-结构模块)
+6. **Recycle**：反复将最终损失函数应用于输出，然后将输出递归地提供给相同的模块
+   1. 来源：CV (**TODO**：read ref 28, 29)
+   2. 显著提升准确率，额外训练时间很少
+
+### Evoformer
+
+1. ![Evoformer结构]({% link assets/images/papers/AlphaFold2-EvoformerArch.png %})
+2. 用MSA表示更新配对表示：在MSA序列维度上求和的逐元素外积(Element-wise outer product)
+   1. 来源：[rawMSA][1] (**TODO**: read rawMSA (ref 30, PLoS 2019))  
+   2. 与rawMSA不同：此操作应用于每个块中，而不是在网络中应用一次，这使得从不断发展的MSA表示到配对表示的连续通信成为可能。
+   3. 细节：[附录1.6.4](#164-外积模块)
+3. 配对表示中的两种更新模式（图3c）（受配对表示中一致性需求的启发：为了将氨基酸的成对描述表示为单个 3-D 结构，必须满足许多约束，包括距离上的三角不等式。）
+   1. 整个配对表示被描述为一个以邻接矩阵表示的有向图；图3c中被更新的边为`ij`
+   2. Attention基本结构：用于高维Transformer的[轴向注意力(Axial Attention)][2]
+      1. Axial Attention: 对于高维数据（如图像等），将除了某个维度之外的所有维度转置到batch dim上面去，降低计算复杂度
+   3. 更新模式1：三角形self-attention（图3c后两个），根据某条边更新与其起点或终点相同的边
+   4. 更新模式2：三角形乘法更新（图3c前两个，作为self-attention的简化替代品），根据`ik`和`jk`更新`ij` (outgoing)，或根据`ki`和`kj`更新`ij` (incoming)
+   5. 两种更新模式可以单独使用，联合使用效果更好
+   6. 细节：[附录1.6.5](#165-三角形乘法更新)和[附录1.6.6](#166-三角形self-attention)
+4. MSA row-wise（针对每个序列的）self-attention加入了pair bias信息（图3a第一行第一个block）
+   1. 从配对栈(pair stack)中投射额外的logits以偏置MSA attention；提供从配对表示到MSA表示的信息流，完成信息闭环以保证混合两类信息
+   2. 细节：[附录1.6.1](#161-MSA%20row-wise%20gated%20self-attention%20with%20pair%20bias)
+
+### 端到端结构预测
+
+1. ![结构模块]({% link assets/images/papers/AlphaFold2-StructureArch.png %})
+2. 输入：配对表示及MSA表示中的原始序列行（"single representation"）
 
 ## 附录解读
 
-### 1.2.7-MSA聚类
+### 1.2-数据流
+
+#### 1.2.7-MSA聚类
+
+### 1.6-Evoformer
+
+#### 1.6.1-MSA row-wise gated self-attention with pair bias
+
+#### 1.6.4-外积模块
+
+#### 1.6.5-三角形乘法更新
+
+#### 1.6.6-三角形self-attention
 
 ### 1.8-结构模块
 
@@ -122,3 +163,6 @@ categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
 ## 代码实例
 
 详见[proj-misc](https://github.com/fyabc/proj-misc/blob/master/Medical/AlphaFold2/README.md)
+
+[1]: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0220182
+[2]: https://arxiv.org/abs/1912.12180

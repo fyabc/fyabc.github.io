@@ -23,6 +23,7 @@ categories: [cat1, cat2, cat3]
 - Affiliation: XXX
 - Published Time: 20XX.XX.XX
 - Accept Time: 20XX.XX.XX
+- Meeting: XXX
 - Citation: **XXX** (Check date)
 - Dataset: XXX
 

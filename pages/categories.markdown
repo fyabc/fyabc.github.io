@@ -24,3 +24,4 @@ permalink: /categories/
 |GNN|图神经网络|
 |Few-shot Learning|小样本学习|
 |Meta-Learning|元学习|
+|SBDD|基于结构的药物设计(Structured-Based Drug Design)|

@@ -25,11 +25,22 @@ categories: [task.SBDD, tech.MCTS, tech.Docking]
 - Accept Time: 20XX.XX.XX
 - Meeting: XXX
 - Citation: **1** (2021.09.02)
-- Dataset: XXX
+- **Dataset**: ZINC以及四个固定的靶点（详见[数据集](#数据集)）
+- Main Method: MCTS
 
 ## 文章解读
 
-正在完善中。
+### 数据集
+
+1. Ligand: About **250K** molecules from ZINC
+2. Target: 4 targets (CDK2, EGFR, AA2AR, ADRB2), 对应的PDB IDs: 1H00, 2RGP, 3EML, 3NY8
+
+### Docking (Evaluation) 方法
+
+1. Evaluation Metric: Better Docking score
+2. Docking软件：[rDock](http://rdock.sourceforge.net/)
+3. Docking参数：详见2.3节
+4. Docking分数作为MCTS的reward
 
 ## 代码研究
 

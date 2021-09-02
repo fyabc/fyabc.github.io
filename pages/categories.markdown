@@ -9,10 +9,10 @@ permalink: /categories/
 
 |前缀名|解释|
 |---|---|
-|task:|任务标记|
-|tech:|技术标记|
-|model:|模型标记|
-|dataset:|数据集标记|
+|task.|任务标记|
+|tech.|技术标记|
+|model.|模型标记|
+|dataset.|数据集标记|
 
 ## 标签列表
 
@@ -25,3 +25,5 @@ permalink: /categories/
 |Few-shot Learning|小样本学习|
 |Meta-Learning|元学习|
 |SBDD|基于结构的药物设计(Structured-Based Drug Design)|
+|GAN|生成式对抗网络|
+|Tgt2Drug|Target to Drug Generation|

@@ -27,3 +27,4 @@ permalink: /categories/
 |SBDD|基于结构的药物设计(Structured-Based Drug Design)|
 |GAN|生成式对抗网络|
 |Tgt2Drug|Target to Drug Generation|
+|RecSys|推荐系统|

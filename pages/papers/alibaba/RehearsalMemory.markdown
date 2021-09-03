@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 论文笔记模板
-description: 描述
-permalink: /research-notes/link-name
+title: Rehearsal Memory (RM)
+# description: 描述
+permalink: /research-notes/RehearsalMemory
 categories: [cat1, cat2, cat3]
 ---
 
@@ -17,10 +17,10 @@ categories: [cat1, cat2, cat3]
 
 ## 信息
 
-- Name: XXX
-- Abbr: **XXX**
+- Name: Learning to Rehearse in Long Sequence Memorization
+- Abbr: **Rehearsal Memory (RM)**
 - Author: XXX
-- Affiliation: XXX
+- Affiliation: DAMO Alibaba
 - Preprint/Received Time: 20XX.XX.XX
 - Published Time: 20XX.XX.XX
 - Meeting: XXX

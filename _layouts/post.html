@@ -9,6 +9,9 @@
     <script src="https://code.jquery.com/jquery-3.3.0.min.js" integrity="sha256-RTQy8VOmNlT6b2PIRur37p6JEBZUE7o8wPgMvu18MC4=" crossorigin="anonymous"></script>
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 
+    <!-- Add custom JS -->
+    <script src="/assets/js/category_utils.js"></script>
+
     <!-- Add MathJax equation support ($$ equation $$) -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -33,7 +36,8 @@
         <a href="{{ site.github.repository_url }}/blob/master/{{ page.path }}" class="button fork"><strong>View On GitHub</strong></a>
         <a href="{{ site.url }}" class="button btn-home"><strong>Home</strong></a>
 
-        <p id="post-categories"><b>分类</b>：{{ page.categories | join: '，' | default: '无' }}</p> <!-- Show categories -->
+        <!-- Show categories -->
+        <p id="post-categories">{{ page.categories | join: ',' }}</p>
       </div><!-- end banner -->
 
     <div class="wrapper">

@@ -8,9 +8,9 @@ categories: [tech.Attention, tech.AttentionSpeedup, task.RecSys]
 
 ## 链接
 
-- 主页：<https://xxx>
-- 正文：<https://xxx>
-- 附件：<https://xxx>
+- 主页：<https://arxiv.org/abs/2105.14068>
+- 正文：<https://arxiv.org/pdf/2105.14068/pdf>
+- 附件：无
 - 代码：<https://xxx>
 - 其他笔记：
   - <https://xxx>
@@ -19,12 +19,12 @@ categories: [tech.Attention, tech.AttentionSpeedup, task.RecSys]
 
 - Name: Linear-Time Self Attention with Codeword Histogram for Efficient Recommendation
 - Abbr: **LISA**
-- Author: XXX
+- Author: Yongji Wu, Defu Lian, Neil Zhenqiang Gong, Lu Yin, Mingyang Yin, Jingren Zhou, Hongxia Yang
 - Affiliation: DAMO Alibaba
 - Preprint/Received Time: 20XX.XX.XX
-- Published Time: 20XX.XX.XX
-- Meeting: XXX
-- Citation: **XXX** (Check date)
+- Published Time: 2021.05.28
+- Meeting: WWW 2021
+- Citation: **1** (2021.09.03)
 - Dataset: XXX
 - Main Method: XXX
 

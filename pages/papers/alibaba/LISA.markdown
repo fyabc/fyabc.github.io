@@ -63,6 +63,72 @@ LISA 配备了一系列码本来对项目（或任何形式的令牌）进行编
 直方图用于在 O(L) 时间内计算注意力权重矩阵。然后我们将具有注意力权重的码字合并以获得输出。
 为了在单向设置中启用自注意力（即使用临时掩码 [19]），我们可以采用前缀和的机制并在序列的每个位置计算直方图。
 
+与依赖稀疏模式的高效注意方法相比，我们提出的方法对输入序列执行完全上下文注意，计算和记忆复杂度与序列长度成线性关系。我们提出的方法还享有 LightRec 带来的项目嵌入的压缩。
+特别是在在线推荐设置中，我们的方法可以用固定大小的直方图封装用户的整个历史，大大降低存储成本。
+
+我们的贡献可以总结如下：
+
+- 我们提出了LISA（线性时间自注意力），这是一种用于有效推荐的新型注意力机制，可将计算注意力分数的复杂性从O(L2D) 降低到O(LBW)，同时启用模型压缩。码字总数 BW 是性能和速度之间的预算超参数平衡。
+- 我们还提出了 LISA 的两种变体，其中一种允许软码字分配，另一种使用单独的码本对序列进行编码。这些技术使我们能够使用更小的码本，从而进一步提高效率。
+- 我们对四个真实世界的数据集进行了大量实验。我们提出的方法获得了与 vanilla self-attention 相似的性能，同时在性能和效率方面都显着优于最先进的高效注意力基线。
+
+### 相关工作
+
+1. Self-attention in sequential recommendation
+2. Faster attention
+   1. Transformer-XL: long-term dependency
+   2. Sinkhorn Transformer: 
+   3. Reformer:
+   4. Big Bird:
+   5. Clustered Attention:
+   6. Linformer: 
+
+### Notations
+
+1. $$ L $$: 序列长度
+2. $$ D $$: Hidden size
+3. $$ X \in \mathbb{R}^{L \times D} $$: Input
+4. $$ B $$: 码本的基数量 ($$B \ll D$$)
+5. 每个码本以 $$W$$ 个 $$D$$ 维的码字（codeword）组成
+6. $$ \Omega_X $$: 不同的码字下标数 ($$\Omega_X \ll L$$)
+
+### Methodology
+
+1. Attention Mechanism (略)
+2. EmbeddingQuantization with Codebooks
+   1. LightRec (推荐系统加速): 使用 $$B$$ 个码本（codebooks）编码嵌入矩阵（每个码本以 $$W$$ 个 $$D$$ 维的码字（codeword）组成，视为隐空间的一个基）
+   2. 嵌入$$ x_i $$的分解：$$ x_i = \sum_{b=1}^B{c_{w^b_i}^b}, \text{s.t.} w^b_i = \arg \max_{w}{\text{sim} (x_i, c_w^b)} $$
+      1. 本质：将$$x_i$$以码字为基分解，其中每个码本提供一个其中与$$x_i$$最接近的码字
+   3. In LightRec: $$ \text{sim}(x, y) = x^\intercal \mathbf{W} y + \langle \mathbf{w_1}, x \rangle + \langle \mathbf{w_2}, y \rangle $$
+      1. $$ \mathbf{W}, \mathbf{w_1}, \mathbf{w_2} $$为参数
+   4. $$ c_w^b $$为第b个码本中的第w个码字
+   5. 训练过程中，$$\arg\max$$使用可微的softmax代替
+   6. 推断过程中，将$$x_i$$用每个码本中码字的下标代替，存储空间（字节）由$$4ND$$降至$$\frac{1}{8}NB \log_{2}{W} + 4BWD$$
+3. Motivation: 考虑只有一个码本的情况，此时$$x_i = c_{w_i}$$（码本中最接近的向量）
+   1. 观察公式（3），当有重复码本下标时，会重复计算内积，故可化简为公式（4）
+4. Linear-Time Self Attention
+   1. 将上述Motivation扩展到多个码本s的情况，与单码本场景不同，虽然在每个码本中，许多项可能对应同一个码字，但它们的表示在加法组合后会发散。因此，我们仍然需要计算$$q$$和序列中每个项目$$x_i$$之间的内积。
+   2. 因此，将公式（5）按照码本分解，得到公式（6）（可视为多个码本之间的Multi-head），在使用Motivation中的技巧变为公式（7）
+   3. 然而，$$\Omega_X^b$$ 的基数在不同序列X和不同码本b之间变化。因此，公式(7)的计算在不同大小的张量上运行，这对于GPU和TPU中的高效批处理来说是次优的 [20]。出于批处理目的，我们对每个码本中的所有码字执行Attention，将Attention的“上下文大小”固定到W（变换为等价的公式（8））
+   4. 代入Self-Attention情况，又因为不同码本视为不同空间中的Attention，忽略不同码本之间的计算（**这里有疑问？为什么可以忽略？LightRec为什么不使用这个优化？**），得到公式（9）
+   5. 公式（9）处理的是双向Attention情况（可以Attention整个序列），改造为推荐系统中的单向Attention（只能Attend on当前之前的项）
+      1. 使用$$O(\log L)$$的算法快速计算前缀和
+   6. 将Attention参数矩阵Q,K,V代入，得到最终公式（11）
+      1. 可以以$$O(BW^2)$$的空间开销缓存所有内积（这对于原始Attention是不可行的）
+5. Variants
+   1. LISA-Soft: 用softmax替换one-hot下标w，并且不缓存
+   2. LISA-Mini: 两个码本：BW值较小的编码序列，大的编码Target items
+   3. Extensions: 推荐系统中，根据[18]，多层Attention Layers效果不好，故只用单层；LISA也可用于其他任务，如NLP
+6. Complexity: 均摊时间复杂度$$O(LBWD)$$
+
+### 实验
+
+1. Datasets: Alibaba, ML-1M, Video Games
+2. Metrics: HR, NDCG
+3. 从Vanilla Self-Attention迁移到LISA：性能略微上升，说明LISA模拟Attention性能较好
+
+## 总结&提问
+
 ## 代码研究
 
 正在完善中。

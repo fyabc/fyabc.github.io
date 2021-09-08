@@ -134,7 +134,20 @@ categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
 ### 端到端结构预测
 
 1. ![结构模块]({% link assets/images/papers/AlphaFold2-StructureArch.png %})
-2. 输入：配对表示及MSA表示中的原始序列行（"single representation"）
+2. 输入：**配对表示**及MSA表示中的**原始序列行**（**单一表示**/single representation），基于**3D全局骨架结构**(3D backbone frames)
+3. 3D全局骨架结构（图3e）：表示为$$N_{res}$$个独立的旋转和平移（相对于全局结构/**residue gas**），表示`N-Cα-C`原子的几何形状
+   1. 优先考虑蛋白质骨架的方向，以便每个残基的侧链位置在该框架内受到高度限制。
+   2. 相反，肽键几何形状完全不受约束，并且在应用结构模块期间观察到网络经常违反链约束，因为打破此约束允许对链的所有部分进行局部细化，而无需解决复杂的闭环问题。（在微调期间通过违规损失项鼓励满足肽键几何形状）
+   3. 只有在Amber力场中通过梯度下降对结构进行预测后松弛（细节：[附录1.8.6](#186-amber松弛)），才能实现肽键几何形状的精确执行。
+      1. 根据经验，这种最终松弛并没有提高模型的准确性，如通过全局距离测试(GDT)或IDDT-Cα测量的那样，但确实消除了分散注意力的立体化学违规（distracting stereochemical violations）而不会损失准确性。
+      2. Amber力场是在生物大分子的模拟计算领域有著广泛应用的一个分子力场。Amber力场的优势在于对生物大分子的计算，其对小分子体系的计算结果常常不能令人满意。
+   4. **TODO**：这段话是什么意思？“蛋白质骨架方向”和“肽键几何形状”的“约束”分别是什么？
+4. 更新Residue gas（图3d）：分两步
+   1. 使用不变点注意力(Invariant Point Attention, **IPA**)更新单一表示（$$N_{res}$$个neural activations）（固定3D位置），然后根据更新后的activations更新Residual gas
+   2. IPA对Attention中的Q/K/V都通过每个残基的局部骨架中产生的3D点进行了增强，是的最终值对全局旋转和平移保持不变。
+   3. 3D Q/K也对Attention施加了强烈的空间/局部偏差（spatial/locality bias），以适应蛋白质结构的迭代细化。
+   4. 在每个IPA和Element-wise Transition Block之后，该模块计算每个3D骨架结构的旋转和平移的更新。这些更新在每个残基的局部骨架（local frame）内的应用使得整个Attention和Update block成为对residue gas的等变操作。
+   5. IPA细节：[附录1.8.2](#182-ipa)
 
 ## 附录解读
 
@@ -153,6 +166,10 @@ categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
 #### 1.6.6-三角形self-attention
 
 ### 1.8-结构模块
+
+#### 1.8.2-IPA
+
+#### 1.8.6-Amber松弛
 
 ## 代码研究
 

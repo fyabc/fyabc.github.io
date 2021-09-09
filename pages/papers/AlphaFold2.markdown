@@ -4,6 +4,7 @@ title: AlphaFold2论文笔记
 description: AlphaFold2论文、附录及用法
 permalink: /research-notes/AlphaFold2
 categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
+local_repo: https://github.com/fyabc/off-AF2/blob/master
 ---
 
 ## 链接
@@ -12,6 +13,7 @@ categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
 - 正文：<https://www.nature.com/articles/s41586-021-03819-2_reference.pdf>
 - 附件：<https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf>
 - 代码：<https://github.com/deepmind/alphafold>
+- 本地代码：<https://github.com/fyabc/off-AF2>
 - 其他笔记：
   - <https://zhuanlan.zhihu.com/p/396756568>
   - <https://www.jiqizhixin.com/articles/2021-07-30-5>
@@ -134,20 +136,33 @@ categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
 ### 端到端结构预测
 
 1. ![结构模块]({% link assets/images/papers/AlphaFold2-StructureArch.png %})
-2. 输入：**配对表示**及MSA表示中的**原始序列行**（**单一表示**/single representation），基于**3D全局骨架结构**(3D backbone frames)
-3. 3D全局骨架结构（图3e）：表示为$$N_{res}$$个独立的旋转和平移（相对于全局结构/**residue gas**），表示`N-Cα-C`原子的几何形状
-   1. 优先考虑蛋白质骨架的方向，以便每个残基的侧链位置在该框架内受到高度限制。
-   2. 相反，肽键几何形状完全不受约束，并且在应用结构模块期间观察到网络经常违反链约束，因为打破此约束允许对链的所有部分进行局部细化，而无需解决复杂的闭环问题。（在微调期间通过违规损失项鼓励满足肽键几何形状）
+2. 输入：**配对表示**及MSA表示中的**原始序列行**（**单一表示**/single representation），基于**3D骨架帧**(3D backbone frames)
+3. 3D骨架帧（图3e）：表示为$$N_{res}$$个独立的旋转和平移$$\{R_i, \vec{\textbf{t}_i}\} \in \{ \mathbb{R}^{3\times3}, \mathbb{R}^3 \}$$（相对于全局帧/**residue gas**），表示`N-Cα-C`原子的几何形状（细节：[附录1.8.1](#181-从原子位置构造骨架)）
+   1. 优先考虑蛋白质骨架的方向，以便每个残基的侧链位置在该帧内受到高度限制。
+   2. 相反，肽键几何形状完全不受约束，并且在应用结构模块期间观察到网络经常违反链约束，因为打破此约束允许对链的所有部分进行局部细化，而无需解决复杂的闭环问题。（在微调期间通过violation loss item鼓励满足肽键几何形状）
    3. 只有在Amber力场中通过梯度下降对结构进行预测后松弛（细节：[附录1.8.6](#186-amber松弛)），才能实现肽键几何形状的精确执行。
       1. 根据经验，这种最终松弛并没有提高模型的准确性，如通过全局距离测试(GDT)或IDDT-Cα测量的那样，但确实消除了分散注意力的立体化学违规（distracting stereochemical violations）而不会损失准确性。
       2. Amber力场是在生物大分子的模拟计算领域有著广泛应用的一个分子力场。Amber力场的优势在于对生物大分子的计算，其对小分子体系的计算结果常常不能令人满意。
    4. **TODO**：这段话是什么意思？“蛋白质骨架方向”和“肽键几何形状”的“约束”分别是什么？
 4. 更新Residue gas（图3d）：分两步
    1. 使用不变点注意力(Invariant Point Attention, **IPA**)更新单一表示（$$N_{res}$$个neural activations）（固定3D位置），然后根据更新后的activations更新Residual gas
-   2. IPA对Attention中的Q/K/V都通过每个残基的局部骨架中产生的3D点进行了增强，是的最终值对全局旋转和平移保持不变。
+   2. IPA对Attention中的Q/K/V都通过每个残基的局部帧中产生的3D点进行了增强，使得最终值对全局旋转和平移保持不变。
    3. 3D Q/K也对Attention施加了强烈的空间/局部偏差（spatial/locality bias），以适应蛋白质结构的迭代细化。
-   4. 在每个IPA和Element-wise Transition Block之后，该模块计算每个3D骨架结构的旋转和平移的更新。这些更新在每个残基的局部骨架（local frame）内的应用使得整个Attention和Update block成为对residue gas的等变操作。
+   4. 在每个IPA和Element-wise Transition Block之后，该模块计算每个3D骨架帧的旋转和平移的更新。这些更新在每个残基的局部帧内的应用使得整个Attention和Update block成为对residue gas的等变操作。
    5. IPA细节：[附录1.8.2](#182-ipa)
+5. 侧链chi角和最终的pLDDT的预测：在网络末端的final activation上使用小的每个残基网络（per-residual network）计算。
+   1. 最终的pTM-score从pairwise error prediction中获得，由最终的配对表示经过一个线性变换得到。
+   2. **Final Loss**: Frame-aligned point error (FAPE) (图3f)
+      1. 对于多个Alignment，根据骨架$$R_k, \mathbf{t}_k $$构造原子坐标，计算每个原子预测位置与真实位置的距离，得到$$N_{frames} \times N_{atoms}$$个距离，以Clamped L1-loss优化。该Loss强烈倾向于使每个原子符合其局部骨架，并且是输出中手性（chirality）的主要来源（细节：[附录1.9.1](#191-侧链和骨架扭转角损失函数)及附录图9）
+   3. 侧链chi角：参见<https://en.wikipedia.org/wiki/Dihedral_angle#Proteins>。
+      1. 侧链图示：![蛋白质二面角图示]({% link assets/images/papers/AlphaFold2-DehedralAngle.png %})
+      2. 图中，$$\omega, \Phi, \Psi$$三个角分别表示的是它们图标所在的两个平面的夹角
+      3. 由于羰基的性质，$$\omega$$通常为180°
+      4. 从Cα开始，侧链的第n个二面角称为$$\chi_n$$，通常趋向于180°和±60°
+      5. “键长-二面角”表示和“3D坐标”表示之间可以互换，但计算需要耗时间
+   4. 细节：[附录1.8.4](#184-计算所有原子坐标)
+
+### 使用标记和未标记数据进行训练
 
 ## 附录解读
 
@@ -167,13 +182,28 @@ categories: [task.PSP, task.MSA, model.AlphaFold2, tech.KD, dataset.CASP14]
 
 ### 1.8-结构模块
 
+### 1.8.1-从原子位置构造骨架
+
 #### 1.8.2-IPA
+
+#### 1.8.4-计算所有原子坐标
 
 #### 1.8.6-Amber松弛
 
+### 1.9-损失函数和辅助Heads
+
+#### 1.9.1-侧链和骨架扭转角损失函数
+
+1. 扭转角：<https://zh.wikipedia.org/wiki/%E4%BA%8C%E9%9D%A2%E8%A7%92#%E7%AB%8B%E4%BD%93%E5%8C%96%E5%AD%A6>
+
 ## 代码研究
 
-1. **NOTE**：代码研究基于2021.08.21的代码（commit `cef198e`）
+1. **NOTE**：代码研究基于2021.09.09的代码（commit `b1d772d127fcff4cc01d8fa1b4ea6e07da12193d`）
+
+### 代码结构
+
+1. 主入口：[`run_alphafold.py`]({{page.local_repo}}/run_alphafold.py)
+   1. 主函数：[`predict_structure`]({{page.local_repo}}/run_alphafold.py#L107)
 
 正在完善中。
 

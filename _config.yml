@@ -64,6 +64,7 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - scripts/
 incremental: false
 highlighter: rouge
 gist:

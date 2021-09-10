@@ -4,9 +4,10 @@
 
 const TAG_BG_COLORS = {
     task: 'Coral',
-    tech: 'LightBlue',
+    tech: 'SkyBlue',
     dataset: 'LightYellow',
-    model: 'LightGreen',
+    model: 'MediumSeaGreen',
+    tool: 'Gainsboro',
 };
 
 function modifyCategories() {

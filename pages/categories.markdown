@@ -13,6 +13,7 @@ permalink: /categories/
 |tech.|技术标记|
 |model.|模型标记|
 |dataset.|数据集标记|
+|tool.|工具标记|
 
 ## 标签列表
 

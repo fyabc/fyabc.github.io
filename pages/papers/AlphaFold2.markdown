@@ -84,10 +84,13 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 
 ### AlphaFold2 Network
 
+<!-- URL to details page. -->
+{% capture DetailsURL %}{% link pages/papers/AlphaFold2-details.markdown %}{% endcapture %}
+
 1. ![AlphaFold2模型架构]({% link assets/images/papers/AlphaFold2-ModelArch.png %})
 2. 模型：基于演化、物理和几何约束的新模型结构和训练算法
    1. **输入特征**：MSA表示 + 配对(pairwise)表示
-      1. 输入人的蛋白质序列，在基因数据集中搜索同源序列并进行MSA，作为MSA输入（使用[rawMSA][1]初始化，但对特别深的MSA作特别处理，参见[附录1.2.7](#127-MSA聚类)）
+      1. 输入人的蛋白质序列，在基因数据集中搜索同源序列并进行MSA，作为MSA输入（使用[rawMSA][1]初始化，但对特别深的MSA作特别处理，参见[附录1.2.7]({{DetailsURL}}#127-MSA聚类)）
       2. 对输入蛋白质序列进行配对(pairing)和在结构数据集中搜索模板，作为pairwise features输入
          1. 配对表示(Pair representation)：将蛋白质结构预测视为3D空间中的图推理问题，其中图的边缘由邻近的残基定义。配对表示的元素编码有关残基之间关系的信息（图3b）
    2. 一种新的**输出表示**和相关的损失函数，可实现准确的端到端结构预测
@@ -112,7 +115,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
       1. **打破链原子结构**以允许同时对结构的所有部分进行局部细化
       2. 一个新的**等变Transformer**，允许网络隐式推理未表示的侧链原子
       3. 一个代表残基方向准确性的**损失函数项**
-   4. 详细解读：[附录1.8](#18-结构模块)
+   4. 详细解读：[附录1.8]({{DetailsURL}}#18-结构模块)
 6. **Recycle**：反复将最终损失函数应用于输出，然后将输出递归地提供给相同的模块
    1. 来源：CV (**TODO**：read ref 28, 29)
    2. 显著提升准确率，额外训练时间很少
@@ -123,7 +126,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 2. 用MSA表示更新配对表示：在MSA序列维度上求和的逐元素外积(Element-wise outer product)
    1. 来源：[rawMSA][1]
    2. 与rawMSA不同：此操作应用于每个块中，而不是在网络中应用一次，这使得从不断发展的MSA表示到配对表示的连续通信成为可能。
-   3. 细节：[附录1.6.4](#164-外积模块)
+   3. 细节：[附录1.6.4]({{DetailsURL}}#164-外积模块)
 3. 配对表示中的两种更新模式（图3c）（受配对表示中一致性需求的启发：为了将氨基酸的成对描述表示为单个 3-D 结构，必须满足许多约束，包括距离上的三角不等式。）
    1. 整个配对表示被描述为一个以邻接矩阵表示的有向图；图3c中被更新的边为`ij`
    2. Attention基本结构：用于高维Transformer的[轴向注意力(Axial Attention)][2]
@@ -131,19 +134,19 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
    3. 更新模式1：三角形self-attention（图3c后两个），根据某条边更新与其起点或终点相同的边
    4. 更新模式2：三角形乘法更新（图3c前两个，作为self-attention的简化替代品），根据`ik`和`jk`更新`ij` (outgoing)，或根据`ki`和`kj`更新`ij` (incoming)
    5. 两种更新模式可以单独使用，联合使用效果更好
-   6. 细节：[附录1.6.5](#165-三角形乘法更新)和[附录1.6.6](#166-三角形self-attention)
+   6. 细节：[附录1.6.5]({{DetailsURL}}#165-三角形乘法更新)和[附录1.6.6]({{DetailsURL}}#166-三角形self-attention)
 4. MSA row-wise（针对每个序列的）self-attention加入了pair bias信息（图3a第一行第一个block）
    1. 从配对栈(pair stack)中投射额外的logits以偏置MSA attention；提供从配对表示到MSA表示的信息流，完成信息闭环以保证混合两类信息
-   2. 细节：[附录1.6.1](#161-MSA%20row-wise%20gated%20self-attention%20with%20pair%20bias)
+   2. 细节：[附录1.6.1]({{DetailsURL}}#161-MSA%20row-wise%20gated%20self-attention%20with%20pair%20bias)
 
 ### 端到端结构预测
 
 1. ![结构模块]({% link assets/images/papers/AlphaFold2-StructureArch.png %})
 2. 输入：**配对表示**及MSA表示中的**原始序列行**（**单一表示**/single representation），基于**3D骨架帧**(3D backbone frames)
-3. 3D骨架帧（图3e）：表示为$$N_{res}$$个独立的旋转和平移$$\{R_i, \vec{\textbf{t}_i}\} \in \{ \mathbb{R}^{3\times3}, \mathbb{R}^3 \}$$（相对于全局帧/**residue gas**），表示`N-Cα-C`原子的几何形状（细节：[附录1.8.1](#181-从原子位置构造骨架)）
+3. 3D骨架帧（图3e）：表示为$$N_{res}$$个独立的旋转和平移$$\{R_i, \vec{\textbf{t}_i}\} \in \{ \mathbb{R}^{3\times3}, \mathbb{R}^3 \}$$（相对于全局帧/**residue gas**），表示`N-Cα-C`原子的几何形状（细节：[附录1.8.1]({{DetailsURL}}#181-从原子位置构造骨架)）
    1. 优先考虑蛋白质骨架的方向，以便每个残基的侧链位置在该帧内受到高度限制。
    2. 相反，肽键几何形状完全不受约束，并且在应用结构模块期间观察到网络经常违反链约束，因为打破此约束允许对链的所有部分进行局部细化，而无需解决复杂的闭环问题。（在微调期间通过violation loss item鼓励满足肽键几何形状）
-   3. 只有在Amber力场中通过梯度下降对结构进行预测后松弛（细节：[附录1.8.6](#186-amber松弛)），才能实现肽键几何形状的精确执行。
+   3. 只有在Amber力场中通过梯度下降对结构进行预测后松弛（细节：[附录1.8.6]({{DetailsURL}}#186-amber松弛)），才能实现肽键几何形状的精确执行。
       1. 根据经验，这种最终松弛并没有提高模型的准确性，如通过全局距离测试(GDT)或IDDT-Cα测量的那样，但确实消除了分散注意力的立体化学违规（distracting stereochemical violations）而不会损失准确性。
       2. Amber力场是在生物大分子的模拟计算领域有著广泛应用的一个分子力场。Amber力场的优势在于对生物大分子的计算，其对小分子体系的计算结果常常不能令人满意。
    4. **TODO**：这段话是什么意思？“蛋白质骨架方向”和“肽键几何形状”的“约束”分别是什么？
@@ -152,18 +155,18 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
    2. IPA对Attention中的Q/K/V都通过每个残基的局部帧中产生的3D点进行了增强，使得最终值对全局旋转和平移保持不变。
    3. 3D Q/K也对Attention施加了强烈的空间/局部偏差（spatial/locality bias），以适应蛋白质结构的迭代细化。
    4. 在每个IPA和Element-wise Transition Block之后，该模块计算每个3D骨架帧的旋转和平移的更新。这些更新在每个残基的局部帧内的应用使得整个Attention和Update block成为对residue gas的等变操作。
-   5. IPA细节：[附录1.8.2](#182-ipa)
+   5. IPA细节：[附录1.8.2]({{DetailsURL}}#182-ipa)
 5. 侧链chi角和最终的pLDDT的预测：在网络末端的final activation上使用小的每个残基网络（per-residual network）计算。
    1. 最终的pTM-score从pairwise error prediction中获得，由最终的配对表示经过一个线性变换得到。
    2. **Final Loss**: Frame-aligned point error (FAPE) (图3f)
-      1. 对于多个Alignment，根据骨架$$R_k, \mathbf{t}_k $$构造原子坐标，计算每个原子预测位置与真实位置的距离，得到$$N_{frames} \times N_{atoms}$$个距离，以Clamped L1-loss优化。该Loss强烈倾向于使每个原子符合其局部骨架，并且是输出中手性（chirality）的主要来源（细节：[附录1.9.1](#191-侧链和骨架扭转角损失函数)及附录图9）
+      1. 对于多个Alignment，根据骨架$$R_k, \mathbf{t}_k $$构造原子坐标，计算每个原子预测位置与真实位置的距离，得到$$N_{frames} \times N_{atoms}$$个距离，以Clamped L1-loss优化。该Loss强烈倾向于使每个原子符合其局部骨架，并且是输出中手性（chirality）的主要来源（细节：[附录1.9.1]({{DetailsURL}}#191-侧链和骨架扭转角损失函数)及附录图9）
    3. 侧链chi角：参见<https://en.wikipedia.org/wiki/Dihedral_angle#Proteins>。
       1. 侧链图示：![蛋白质二面角图示]({% link assets/images/papers/AlphaFold2-DehedralAngle.png %})
       2. 图中，$$\omega, \Phi, \Psi$$三个角分别表示的是它们图标所在的两个平面的夹角
       3. 由于羰基的性质，$$\omega$$通常为180°
       4. 从Cα开始，侧链的第n个二面角称为$$\chi_n$$，通常趋向于180°和±60°
       5. “键长-二面角”表示和“3D坐标”表示之间可以互换，但计算需要耗时间
-   4. 细节：[附录1.8.4](#184-计算所有原子坐标)
+   4. 细节：[附录1.8.4]({{DetailsURL}}#184-计算所有原子坐标)
 
 ### 使用标记和未标记数据进行训练
 
@@ -176,11 +179,11 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 
 ### 解释网络
 
-1. 为48个Evoformer各自单独训练了一个结构模块，同时冻结主网络参数（细节：[附录1.12](#112-casp14评估)）
+1. 为48个Evoformer各自单独训练了一个结构模块，同时冻结主网络参数（细节：[附录1.12]({{DetailsURL}}#112-casp14评估)）
    1. 共计48 Evoformer * 4 Recycling Stages = 192 Sturctures的序列，准确度轨迹见图4b
    2. 对于简单蛋白质（T1024）：快速收敛；对于复杂蛋白质（T1064），在四次循环中逐渐提升
    3. 图4a：Ablation study of different model components
-   4. Attention Visualization：[附录1.16](#116-attention可视化)
+   4. Attention Visualization：[附录1.16]({{DetailsURL}}#116-attention可视化)
 
 ### MSA 深度和跨链接触
 
@@ -232,41 +235,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 
 ## 附录解读
 
-### 1.1-Notations
-
-### 1.2-数据流
-
-#### 1.2.7-MSA聚类
-
-### 1.6-Evoformer
-
-#### 1.6.1-MSA row-wise gated self-attention with pair bias
-
-#### 1.6.4-外积模块
-
-#### 1.6.5-三角形乘法更新
-
-#### 1.6.6-三角形self-attention
-
-### 1.8-结构模块
-
-### 1.8.1-从原子位置构造骨架
-
-#### 1.8.2-IPA
-
-#### 1.8.4-计算所有原子坐标
-
-#### 1.8.6-Amber松弛
-
-### 1.9-损失函数和辅助Heads
-
-#### 1.9.1-侧链和骨架扭转角损失函数
-
-1. 扭转角：<https://zh.wikipedia.org/wiki/%E4%BA%8C%E9%9D%A2%E8%A7%92#%E7%AB%8B%E4%BD%93%E5%8C%96%E5%AD%A6>
-
-### 1.12-CASP14评估
-
-### 1.16-Attention可视化
+见[此页]({% link pages/papers/AlphaFold2-details.markdown %})。
 
 ## 代码研究
 

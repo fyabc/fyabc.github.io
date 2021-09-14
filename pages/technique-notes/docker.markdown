@@ -17,6 +17,8 @@ categories: [Docker]
 2. Docker中的`systemctl`替代品：<https://github.com/gdraheim/docker-systemctl-replacement>
    1. 用法：参考<https://github.com/gdraheim/docker-systemctl-images>
    2. 目前实验，对安装docker没用，报错：`ERROR:systemctl:Unit docker.service not found.`
-3. Docker交互运行一个容器：
-   1. `docker run -itd --name test registry-name`
-   2. `docker exec -it test /bin/bash`
+3. Docker拉取交互运行一个容器：
+   1. `docker pull registry-name`
+   2. `docker run -itd --name test registry-name`
+   3. `docker exec -it test /bin/bash`
+4. Docker每个命令都在一个独立的容器中运行，因此`RUN cd xxx`在后续的命令中没有效果，需要使用`WORKDIR`代替。

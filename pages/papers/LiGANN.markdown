@@ -9,7 +9,7 @@ categories: [task.Tgt2Drug, task.BindingPocket2Drug, tech.GAN, dataset.DUD-E]
 ## 链接
 
 - 主页：<https://pubs.acs.org/doi/pdf/10.1021/acs.molpharmaceut.9b00634>
-- 正文：本地PDF(same title)
+- 正文：本地PDF(Biomedical/same title)
 - 附件：<https://xxx>
 - 代码：<https://xxx>
 - 其他笔记：

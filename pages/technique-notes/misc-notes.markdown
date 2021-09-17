@@ -10,3 +10,4 @@ categories: [杂项，技巧]
 2. 使用VSCode在线浏览GitHub仓库：在仓库的GitHub目录下，将`github.com`改为`github1s.com`
 3. All-In-One Note: [Notion](https://www.notion.so/zh-cn)
 4. 在WSL挂载UNC path: `sudo mount -t drvfs '\\msralab\ProjectData\LA' /mnt/LA` (先建立`/mnt/LA`目录)
+5. [Electron](https://www.electronjs.org/): 一个使用JavaScript的桌面GUI库

@@ -23,7 +23,7 @@ categories: [cat1, cat2, cat3]
 - Affiliation: XXX
 - Preprint/Received Time: 20XX.XX.XX
 - Published Time: 20XX.XX.XX
-- Meeting: XXX
+- Conference / Journal: XXX
 - Citation: **XXX** (Check date)
 - Dataset: XXX
 - Main Method: XXX

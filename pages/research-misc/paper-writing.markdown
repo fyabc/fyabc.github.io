@@ -18,10 +18,12 @@ categories: [论文写作]
 ## Related Work
 
 - XXX et al. **proposed to** some methods ...
-- Clustered Attention, ***introduced in*** XXX ...
+- Clustered Attention, **introduced in** XXX ...
 - Linformer **resorts to** (诉诸) a low-rank projection on the length dimension.
 - Most of the **aforementioned** (之前的) approaches/work ...
 
 ## Methodology / Architecture / Algorithm
 
 ## Experiments / Experimental Results
+
+- Analysis of the **discrepancy** (差异) from known molecules.

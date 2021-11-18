@@ -25,14 +25,16 @@ categories: [task.Tgt2Drug]
 - Affiliation: Guangzhou Regenerative Medicine and Health - Guangdong Laboratory
 - Preprint/Received Time: 2021.01.03
 - Published Time: 2021.07.01
-- Meeting: ACS Publications
+- Conference / Journal: JCIM (IF: 4.543)
 - Citation: **2** (2021.09.14)
-- Dataset: XXX
+- Dataset: sc-PDB & eModel-BDB
 - Main Method: XXX
 
 ## 文章解读
 
-正在完善中。
+1. 主要思路：基于氨基酸预先设计了11种模板（怀疑有化学系的人预先设计），然后基于这11中模板抽取Binding Pocket的EGCM（特征矩阵），然后该矩阵的特征值就是这个Pocket的特征
+2. cRNN generative model (teacher forcing 加速收敛)
+3. Based on DeeplyTouch cRNN
 
 ## 代码研究
 

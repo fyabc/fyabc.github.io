@@ -23,7 +23,7 @@ categories: [task.SBDD, tech.MCTS, tech.Docking]
 - Affiliation: XXX
 - Published Time: 2021.04.06
 - Accept Time: 2021.04.06
-- Conference / Journal: ACS Publications (IF: 15.419)
+- Conference / Journal: JCIM (IF: 4.543)
 - Citation: **1** (2021.09.02)
 - **Dataset**: ZINC以及四个固定的靶点（详见[数据集](#数据集)）
 - Main Method: RNN + MCTS

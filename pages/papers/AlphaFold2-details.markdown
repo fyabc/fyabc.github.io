@@ -55,13 +55,42 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 
 ## 1.3-Self-distillation dataset
 
-1. Build dataset: 针对每个数据库计算Uniclust30中每个簇的MSA，然后贪婪地删除所有重复的MSA序列，得到6.3M个序列
+1. Build dataset
+   1. 针对每个数据库计算Uniclust30中每个簇的MSA，然后贪婪地删除所有重复的MSA序列，得到6.3M个序列
+   2. 删除长度不在$$[200, 1024]$$之间的序列，以及MSA少于200个的序列，得到356K个序列。
+   3. **Undistilled** model:只在PDB数据集上训练的模型，使用该模型预测356K个序列的结构，得到每对残基之间的距离分布$$p_{i, j}(r)$$。
+      1. 参考分布$$p^{ref}_{\|i - j\|(r)}$$：从Uniclust30中随机选取1000个序列取平均距离分布
+      2. Pairwise metric：参考分布与预测分布之间的KL散度，对j取平均值得到残基置信度$$c_i$$（该值越高越好），mask掉$$c_i<0.5$$的残基
 
-### 1.2.7-MSA聚类
+## 1.4-AlphaFold2 Inference
+
+1. ![输入特征]({% link assets/images/papers/AlphaFold2-InputFeatures.png %})
+2. 算法：![算法]({% link assets/images/papers/AlphaFold2-InferAlgo.png %})
+3. **Input**: Sequence, MSA, Templates; **Output**: Atom coordinates, distogram, per-residue confidence scores
+4. 循环$$N_{cycle}$$次；模型第一部分（Feature Embedding和Evoformer）用不同抽样的输入随机执行$$$N_{ensemble}$$次，输出取平均值，作为结构模块和循环的输入。平均的特征以额外的上标表示（$$\hat{z_{ij}}$$（配对表示）和$$\hat{s_i}$$（单独表示））。Ensemble只在inference时使用，且只能少量提升性能。
+   1. 总计使用了$$N_{cycle}\times N_{ensemble}$$个随机MSA Feature样本，以$$\mathbf{f}$$表示
+5. 算法步骤：
+   1. 初始化MSA表示和配对表示（MSA表示的第一行为序列表示，与配对表示一起使用之前循环的输出更新）
+   2. 加入模板信息：template_angle_feat（氨基酸与扭转角）使用简单MLP嵌入过后连接到MSA表示上，template_pair_feat（残基对）使用浅层Attention嵌入过后加到配对表示上。
+   3. 使用Extra MSA Stack处理额外的MSA表示
+   4. 最终输出送入Evoformer
+   5. Evoformer的输出送入结构模块，输出原子坐标和每残基置信度(pLDDT)
+
+## 1.5-输入嵌入
+
+1. MSA feature size $$c_m = 256$$, pairwise feature size $$c_z = 128$$
+2. Relative position embedding: 使用裁剪的one-hot距离（最大距离32），减小超长序列带来的退化影响
 
 ## 1.6-Evoformer
 
+1. ![算法]({% link assets/images/papers/AlphaFold2-EvoformerAlgo.png %})
+2. 图示详见图1e
+
 ### 1.6.1-MSA row-wise gated self-attention with pair bias
+
+1. Row-wise（附录图2，算法7）: 计算残基对之间的Attention weight，并加入配对表示的信息作为额外bias
+2. Column-wise（附录图3，算法8）：使不同MSA之间的同一残基交换信息
+3. MSA transition（附录图4，算法9）：
 
 ### 1.6.4-外积模块
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: From Target to Drug - Generative Modeling for the Multimodal Structure-Based Ligand Design
+title: LiGANN
 # description: 描述
 permalink: /research-notes/LiGANN
 categories: [task.Tgt2Drug, task.BindingPocket2Drug, tech.GAN, dataset.DUD-E]

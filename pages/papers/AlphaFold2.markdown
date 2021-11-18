@@ -90,7 +90,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 1. ![AlphaFold2模型架构]({% link assets/images/papers/AlphaFold2-ModelArch.png %})
 2. 模型：基于演化、物理和几何约束的新模型结构和训练算法
    1. **输入特征**：MSA表示 + 配对(pairwise)表示
-      1. 输入人的蛋白质序列，在基因数据集中搜索同源序列并进行MSA，作为MSA输入（使用[rawMSA][1]初始化，但对特别深的MSA作特别处理，参见[附录1.2.7]({{DetailsURL}}#127-MSA聚类)）
+      1. 输入人的蛋白质序列，在基因数据集中搜索同源序列并进行MSA，作为MSA输入（使用[rawMSA][1]初始化，但对特别深的MSA作特别处理，参见[附录1.2.7]({{DetailsURL}}#12-数据流)）
       2. 对输入蛋白质序列进行配对(pairing)和在结构数据集中搜索模板，作为pairwise features输入
          1. 配对表示(Pair representation)：将蛋白质结构预测视为3D空间中的图推理问题，其中图的边缘由邻近的残基定义。配对表示的元素编码有关残基之间关系的信息（图3b）
    2. 一种新的**输出表示**和相关的损失函数，可实现准确的端到端结构预测

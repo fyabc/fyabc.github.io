@@ -13,3 +13,7 @@ categories: [论文写作, 杂项]
 ## Paper Templates
 
 1. NIPS模板：<https://www.overleaf.com/latex/templates/neurips-2021/bfjnthbqvhgs>
+
+## Presentation
+
+1. 连接词：<https://www.cnblogs.com/zhencv/p/6534815.html>

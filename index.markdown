@@ -107,6 +107,11 @@ In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.
 *arXiv, 2020.*
     <!-- 4. MAT; No SCI/EI -->
 
+1. Back Translation for Molecule Generation \[PDF\]
+**<u>Yang Fan</u>**, Yingce Xia, Jinhua Zhu, Lijun Wu, Shufang Xie, Tao Qin
+Submitted to *Bioinformatics*, 2021
+    <!-- 9. BT4MolGen; No SCI/EI -->
+
 1. Microsoft Research Asia’s Systems for WMT19 \[[PDF](http://statmt.org/wmt19/pdf/53/WMT48.pdf)\]  
 Yingce Xia, Xu Tan, Fei Tian, Fei Gao, Weicong Chen, **<u>Yang Fan</u>**, Linyuan Gong, Yichong Leng, Renqian Luo, Yiren Wang, Lijun Wu, Jinhua Zhu, Tao Qin, and Tie-Yan Liu  
 *The Fourth Conference on Machine Translation* (**WMT-2019**)
@@ -123,8 +128,8 @@ Lijun Wu, Shufang Xie, Yingce Xia, **<u>Yang Fan</u>**, Tao Qin, Jianhuang Lai, 
     <!-- 7. SeqGen-MixRep; No SCI/EI -->
 
 1. Entity-Enhanced Neural Machine Translation  
-Shufang Xie, Yingce Xia, **<u>Yang Fan</u>**, Lijun Wu, Tao Qin  
-2020
+Shufang Xie, Yingce Xia, Lijun Wu, Yiqing Huang, **<u>Yang Fan</u>**, Tao Qin  
+*Asian Conference on Machine Learning 2021* (**ACML-2021**)
     <!-- 8. EntityEnhanced-NMT; No SCI/EI -->
 
 ----

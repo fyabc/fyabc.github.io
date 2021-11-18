@@ -19,6 +19,7 @@ categories: [Docker]
    2. 目前实验，对安装docker没用，报错：`ERROR:systemctl:Unit docker.service not found.`
 3. Docker拉取交互运行一个容器：
    1. `docker pull registry-name`
-   2. `docker run -itd --name test registry-name`
-   3. `docker exec -it test /bin/bash`
+   2. `docker run -itd --name test registry-name /bin/bash`
 4. Docker每个命令都在一个独立的容器中运行，因此`RUN cd xxx`在后续的命令中没有效果，需要使用`WORKDIR`代替。
+5. 挂载本地目录：`--mount`选项
+   1. 不好处理目录中的符号链接，需要在容器内部做链接

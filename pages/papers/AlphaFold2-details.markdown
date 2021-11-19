@@ -27,12 +27,14 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
    3. 输出MSA去重并堆叠起来
 5. Template search （template是另外的类似结构文件）
    1. 用从UniRef90搜索出来的MSA，使用HHSearch在PDB70中搜索模板
-   2. 训练过程中，去除了发布时间晚于训练样本的模板，且去掉了其他一些低质量模板，剩余的模板随机采样，至多四个（防止模型直接复制模板）
-   3. 推断过程中，提供Top-4模板，按正确对齐的残基数期望排序
+   2. 模板内容在PDB的mmCIF文件中，不对齐的使用**Kalign**对齐
+      1. **NOTE**：我们可以使用这个对齐工具
+   3. 训练过程中，去除了发布时间晚于训练样本的模板，且去掉了其他一些低质量模板，剩余的模板随机采样，至多四个（防止模型直接复制模板）
+   4. 推断过程中，提供Top-4模板，按正确对齐的残基数期望排序
 6. Training Data
    1. p=75% from self-distillation data, p=25% from PDB data
 7. Filtering: Resolution, chain length, amino acid diversity, cluster (详见1.2.5)
-8. MSA block detection: 从MSA输出中扇区一些连续的block，以生成多样性
+8. MSA block detection: 从MSA输出中删去一些连续的block，以生成多样性
 9. MSA clustering: 为了降低Evoformer计算复杂度（$$O(N^2_{seq} \times N_{res})$$）以减少输入序列数量
    1. 随机选择$$N_{clust}$$序列作为MSA聚类中心，第一个聚类中心始终设置为输入序列。
    2. 生成一个掩码，使得MSA聚类中心的每个位置都有15%的概率被包含在掩码中。掩码中包含的MSA中的每个元素都按以下方式替换：
@@ -48,7 +50,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 11. Featurization and model inputs 见表1，重要的特征包括：
     1. target_feat ($$[N_{res}, 21]$$): one-hot 氨基酸类别
     2. residue_index ($$[N_{res}]$$): 氨基酸在原序列中的下标
-    3. msa_feat ($$[N_{clust}, N_{res}, 49]$$): MSA之间的氨基酸特征，具体见表1；随机选取$$N_{cycle}\timesN_{ensemble}$$个特征，每个循环/Ensemble使用不同的sample
+    3. msa_feat ($$[N_{clust}, N_{res}, 49]$$): MSA之间的氨基酸特征，具体见表1；随机选取$$N_{cycle}\times N_{ensemble}$$个特征，每个循环/Ensemble使用不同的sample
     4. extra_msa_feat ($$[N_{extra\_seq}, N_{res}, 25]$$):与上面类似
     5. template_pair_feat ($$[N_{templ}, N_{res}, N_{res}, 88]$$): 模板的距离特征
     6. template_angle_feat ($$[N_{templ}, N_{res}, 51]$$): 模板的角度特征
@@ -65,7 +67,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 ## 1.4-AlphaFold2 Inference
 
 1. ![输入特征]({% link assets/images/papers/AlphaFold2-InputFeatures.png %})
-2. 算法：![算法]({% link assets/images/papers/AlphaFold2-InferAlgo.png %})
+2. 全流程详见图1e，![算法2]({% link assets/images/papers/AlphaFold2-InferAlgo.png %})
 3. **Input**: Sequence, MSA, Templates; **Output**: Atom coordinates, distogram, per-residue confidence scores
 4. 循环$$N_{cycle}$$次；模型第一部分（Feature Embedding和Evoformer）用不同抽样的输入随机执行$$$N_{ensemble}$$次，输出取平均值，作为结构模块和循环的输入。平均的特征以额外的上标表示（$$\hat{z_{ij}}$$（配对表示）和$$\hat{s_i}$$（单独表示））。Ensemble只在inference时使用，且只能少量提升性能。
    1. 总计使用了$$N_{cycle}\times N_{ensemble}$$个随机MSA Feature样本，以$$\mathbf{f}$$表示
@@ -83,22 +85,50 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 
 ## 1.6-Evoformer
 
-1. ![算法]({% link assets/images/papers/AlphaFold2-EvoformerAlgo.png %})
-2. 图示详见图1e
+1. 全流程详见图1e，算法6
+2. 输入和输出：MSA表示$$(s, r, c)$$和配对表示$$(r, r, c)$$
+3. Row-wise（附录图2，算法7）: 计算残基对之间的Attention weight，并加入配对表示的信息作为额外bias
+   1. Bias：加强MSA和Pair两个Stack的联系，增强一致性
+4. Column-wise（附录图3，算法8）：使不同MSA之间的同一残基交换信息
+5. MSA transition（附录图4，算法9）：PFFN（$$4c_m$$）
+6. Outer product mean（附录图5，算法10）：每个残基的MSA之间通过Outer product两两交互（average on $$s$$，map to $$c_z$$）
+   1. 中间张量消耗内存：见11.2节实现细节
+7. 三角形乘法更新（图3c，附录图6，算法11，算法12）处理incoming和outgoing edges
+   1. 根据`ik`和`jk`更新`ij` (outgoing)，或根据`ki`和`kj`更新`ij` (incoming)
+8. 三角形self-attention（图3c，附录图7，算法13，算法14）处理starting和ending nodes
+   1. 根据某条边更新与其起点或终点相同的边
+9. Transition in the **pair stack**: PFFN on pairwise representation
 
-### 1.6.1-MSA row-wise gated self-attention with pair bias
+## 1.7-额外输入
 
-1. Row-wise（附录图2，算法7）: 计算残基对之间的Attention weight，并加入配对表示的信息作为额外bias
-2. Column-wise（附录图3，算法8）：使不同MSA之间的同一残基交换信息
-3. MSA transition（附录图4，算法9）：
-
-### 1.6.4-外积模块
-
-### 1.6.5-三角形乘法更新
-
-### 1.6.6-三角形self-attention
+1. **Template stack**
+   1. Template pairwise features
+      2. Dimension $$t_{s_t ij} \in \mathbb{R}^{c_t}, c_t = 64$$。$$s_t \in \{1, \cdots, N_{templ}\}; i, j \in \{1, \cdots, N_{res}\}$$
+      3. 对每个模板，输入先过Transition layers，共享参数（算法2第10-12行）
+      4. 然后过Template point-wise attention（算法17）
+      5. 输出加到配对表示上（算法2第13行）
+   2. Template torsion angle features
+      1. Embedded with a single MLP, and concatenated with the MSA repr (算法2第7-8行)
+      2. 这些额外行不在masked MSA loss中（见1.9.9节）
+      3. **问题**：为什么合并这两者？
+2. **Unclustered MSA stack**
+   1. Dimension $$c_e = 64$$
+   2. 过$$N_{block} = 4$$个MSA blocks，使用Global Column-wise Self Attention (key & value在所有head之间共享)以及较小的$$c = 8$$，减小计算量
+   3. 最终的输出加到Main MSA Stack中
 
 ## 1.8-结构模块
+
+1. 见算法20和图3d
+2. 输入：Single表示$$(r, c_s)$$和配对表示$$(r, r, c_z)$$
+3. Single表示用于初始化$$s_i^{initial} \in \mathbb{R}^{c_s}$$
+4. 8层 + 共享参数：每层更新残基$$i$$抽象的single表示$$\{s_i\}$$以及具体3D表示（“residue gas”），该具体表示编码为每个残基的一个骨架帧$$\{T_i\}$$
+   1. $$\{T_i\}$$由旋转和平移组成，见1.1节；它表示从局部坐标向全局坐标的转换
+   2. 骨架帧初始化为全等变换（起始所有残基位于同一个位置和方向）
+   3. 一层结构模块包含：
+      1. 用Invariant Point Attention (IPA)更新$$\{s_i\}$$
+      2. Transition layer
+      3. 使用$$\{s_i\}$$更新骨架（算法23）
+      4. 预测每个残基的一系列扭转角（表2）
 
 ## 1.8.1-从原子位置构造骨架
 

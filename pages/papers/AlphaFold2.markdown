@@ -13,6 +13,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 - 正文：<https://www.nature.com/articles/s41586-021-03819-2_reference.pdf>
 - 附件：<https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-021-03819-2/MediaObjects/41586_2021_3819_MOESM1_ESM.pdf>
 - 代码：<https://github.com/deepmind/alphafold>
+  - AF2 Database: <https://alphafold.ebi.ac.uk/>
 - 本地代码：<https://github.com/fyabc/off-AF2>
 - 其他笔记：
   - <https://zhuanlan.zhihu.com/p/396756568>
@@ -126,7 +127,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 2. 用MSA表示更新配对表示：在MSA序列维度上求和的逐元素外积(Element-wise outer product)
    1. 来源：[rawMSA][1]
    2. 与rawMSA不同：此操作应用于每个块中，而不是在网络中应用一次，这使得从不断发展的MSA表示到配对表示的连续通信成为可能。
-   3. 细节：[附录1.6.4]({{DetailsURL}}#164-外积模块)
+   3. 细节：[附录1.6.4]({{DetailsURL}}#16-Evoformer)
 3. 配对表示中的两种更新模式（图3c）（受配对表示中一致性需求的启发：为了将氨基酸的成对描述表示为单个 3-D 结构，必须满足许多约束，包括距离上的三角不等式。）
    1. 整个配对表示被描述为一个以邻接矩阵表示的有向图；图3c中被更新的边为`ij`
    2. Attention基本结构：用于高维Transformer的[轴向注意力(Axial Attention)][2]
@@ -134,10 +135,10 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
    3. 更新模式1：三角形self-attention（图3c后两个），根据某条边更新与其起点或终点相同的边
    4. 更新模式2：三角形乘法更新（图3c前两个，作为self-attention的简化替代品），根据`ik`和`jk`更新`ij` (outgoing)，或根据`ki`和`kj`更新`ij` (incoming)
    5. 两种更新模式可以单独使用，联合使用效果更好
-   6. 细节：[附录1.6.5]({{DetailsURL}}#165-三角形乘法更新)和[附录1.6.6]({{DetailsURL}}#166-三角形self-attention)
+   6. 细节：[附录1.6.5和附录1.6.6]({{DetailsURL}}#16-Evoformer)
 4. MSA row-wise（针对每个序列的）self-attention加入了pair bias信息（图3a第一行第一个block）
    1. 从配对栈(pair stack)中投射额外的logits以偏置MSA attention；提供从配对表示到MSA表示的信息流，完成信息闭环以保证混合两类信息
-   2. 细节：[附录1.6.1]({{DetailsURL}}#161-MSA%20row-wise%20gated%20self-attention%20with%20pair%20bias)
+   2. 细节：[附录1.6.1]({{DetailsURL}}#16-Evoformer)
 
 ### 端到端结构预测
 
@@ -240,6 +241,12 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 ## 代码研究
 
 1. **NOTE**：代码研究基于2021.09.09的代码（commit `b1d772d127fcff4cc01d8fa1b4ea6e07da12193d`）
+
+### 关于用到的库
+
+1. [JAX](https://github.com/google/jax): TensorFlow autograd and XLA
+   1. [XLA](https://www.tensorflow.org/xla): 加速线性代数编译器
+   2. [Haiku](https://github.com/deepmind/dm-haiku): Haiku is a simple neural network library for JAX developed by some of the authors of Sonnet, a neural network library for TensorFlow.
 
 ### 代码结构
 

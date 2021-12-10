@@ -14,6 +14,10 @@ categories: [论文写作, 杂项]
 
 1. NIPS模板：<https://www.overleaf.com/latex/templates/neurips-2021/bfjnthbqvhgs>
 
+## Paper Management Tools
+
+1. Paper Memory插件：<https://github.com/vict0rsch/PaperMemory>
+
 ## Presentation
 
 1. 连接词：<https://www.cnblogs.com/zhencv/p/6534815.html>

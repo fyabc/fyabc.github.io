@@ -24,7 +24,4 @@ categories: [杂项，技巧]
 9. 在WSL上安装Anaconda/Miniconda: <https://gist.github.com/kauffmanes/5e74916617f9993bc3479f401dfec7da>
 10. 更新WSL的Ubuntu系统本身：<https://wsl-guide-cn.readthedocs.io/zh_CN/latest/update.html>
     1. <https://clay-atlas.com/us/blog/2020/08/03/linux-en-note-how-to-upgrade-to-new-release/>
-11. Bash manage jobs:
-    1. `jobs`显示所有运行任务
-    2. `kill %1`终止1号任务
-12. Copy folders using scp on 跳板机：先打开`ssh gcrazgdl0180-scp`，然后`scp -P 22222 -r localhost:/scratch/my_output/valid-nox-000[7-9]?? .`
+11. Copy folders using scp on 跳板机：先打开`ssh gcrazgdl0180-scp`，然后`scp -P 22222 -r localhost:/scratch/my_output/valid-nox-000[7-9]?? .`

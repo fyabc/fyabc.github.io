@@ -252,8 +252,79 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 
 1. 主入口：[`run_alphafold.py`]({{page.local_repo}}/run_alphafold.py)
    1. 主函数：[`predict_structure`]({{page.local_repo}}/run_alphafold.py#L107)
+   2. `features.pkl`内容：(`N`为序列长度，`N_msa`为MSA数量, `N_tpl`为Template数量)
 
-正在完善中。
+      ```text
+      aatype (N, 21)
+      between_segment_residues (N,)
+      domain_name (1,)
+      residue_index (N,)
+      seq_length (N,)
+      sequence (1,)
+      deletion_matrix_int (N_msa, N)
+      msa (N_msa, N)
+      num_alignments (N,)
+      template_aatype (N_tpl, N, 22)
+      template_all_atom_masks (N_tpl, N, 37)
+      template_all_atom_positions (N_tpl, N, 37, 3)
+      template_domain_names (N_tpl,)
+      template_sequence (N_tpl,)
+      template_sum_probs (N_tpl, 1)
+      ```
+
+   3. 从`features.pkl`到AlphaFold2的输入：[`nonensembled_map_fns`]({{page.local_repo}}/alphafold/model/tf/input_pipeline.py#L33)
+      1. 其中的每个`map_fns`都是一个转换处理
+   4. AlphaFold2输入内容：(N_maxtpl = 4)
+
+      ```text
+      aatype (N_ens, N)
+      residue_index (N_ens, N)
+      seq_length (N_ens,)
+      atom14_atom_exists (N_ens, N, 14)
+      residx_atom14_to_atom37 (N_ens, N, 14)
+      residx_atom37_to_atom14 (N_ens, N, 37)
+      atom37_atom_exists (N_ens, N, 37)
+      bert_mask (N_ens, N_msa, N)
+      true_msa (N_ens, N_msa, N)
+      extra_msa (N_ens, N_extra_msa, N)
+      extra_msa_mask (N_ens, N_extra_msa, N)
+      extra_msa_row_mask (N_ens, N_extra_msa)
+      extra_has_deletion (N_ens, N_extra_msa, N)
+      extra_deletion_value (N_ens, N_extra_msa, N)
+      msa_feat (N_ens, 508, N, 49)
+      target_feat (N_ens, N, 22)
+      is_distillation (N_ens,)
+      seq_mask (N_ens, N)
+      msa_mask (N_ens, N_msa, N)
+      msa_row_mask (N_ens, N_msa)
+      random_crop_to_size_seed (N_ens, 2)
+      * template_aatype (N_ens, N_maxtpl, N)
+      * template_all_atom_masks (N_ens, N_maxtpl, N, 37)
+      * template_all_atom_positions (N_ens, N_maxtpl, N, 37, 3)
+      * template_sum_probs (N_ens, N_maxtpl, 1)
+      * template_mask (N_ens, N_maxtpl)
+      * template_pseudo_beta (N_ens, N_maxtpl, N, 3)
+      * template_pseudo_beta_mask (N_ens, N_maxtpl, N)
+      ```
+
+   5. 输出Feature内容：
+      1. msa (N_msa, N, 256)
+      2. msa_first_row (N, 256)
+      3. pair (N, N, 128)
+      4. single (N, 384)
+      5. structure_module (N, 384)
+
+### 一些函数的备注
+
+1. [`mmcif_parsing.py`]({{page.local_repo}}/alphafold/data/mmcif_parsing.py)
+   1. 以`2RBG.cif`为实例
+   2. 函数`parse`详细解析
+      1. 输出的MmcifObject中，PdbStructure实际应为PdbModel（取了第一个Model）
+      2. `header`：mmCIF文件中的信息（结构方法、发布时间、分辨率）
+      3. `valid_chains`, `_get_protein_chains`：从mmCIF附录信息中获得所有氨基酸单体的信息
+         1. `valid_chains`: Chain ID to Monomer (氨基酸单体) list （此处Monomer的num是mmCIF内部的序号，无结晶水，有Hetero）（对于2RBG，AB两个链的Monomer都是从1到126）
+      4. `seq_start_num`：标记内部mmCIF序号的起点（一般为1）
+      5. **TODO**
 
 ## 代码实例
 

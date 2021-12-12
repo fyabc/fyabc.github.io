@@ -317,14 +317,23 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
 ### 一些函数的备注
 
 1. [`mmcif_parsing.py`]({{page.local_repo}}/alphafold/data/mmcif_parsing.py)
-   1. 以`2RBG.cif`为实例
-   2. 函数`parse`详细解析
+   1. 以`2RBG.cif`为实例，函数`parse`详细解析
       1. 输出的MmcifObject中，PdbStructure实际应为PdbModel（取了第一个Model）
       2. `header`：mmCIF文件中的信息（结构方法、发布时间、分辨率）
       3. `valid_chains`, `_get_protein_chains`：从mmCIF附录信息中获得所有氨基酸单体的信息
          1. `valid_chains`: Chain ID to Monomer (氨基酸单体) list （此处Monomer的num是mmCIF内部的序号，无结晶水，有Hetero）（对于2RBG，AB两个链的Monomer都是从1到126）
-      4. `seq_start_num`：标记内部mmCIF序号的起点（一般为1）
-      5. **TODO**
+         2. 从mmCIF的`_entity_poly_seq`抽取序列信息
+      4. `seq_start_num`: 标记内部mmCIF序号的起点（一般为1）
+      5. 构造两个Mapping，并收集坐标信息：
+         1. `mmcif_to_author_chain_id`: 将mmCIF内部链编号映射到Author/Biopython正常编号
+         2. `seq_to_structure_mappings`: `Dict[chain_id, Dict[seq_idx, ResidueAtPosition]]`
+            1. 此处`seq_idx`减去了`seq_start_num`，下标从0开始
+            2. `ResidueAtPosition`包含`ResiduePosition`对象，它表示残基在mmCIF文件内部的坐标（`seq_start_num`开始）
+         3. `_get_atom_site_list`：获得坐标信息，从mmCIF的`_atom_site`抽取信息
+      6. 然后收集所有没有得到的坐标信息，也加入`seq_to_structure_mappings`中，无位置信息
+         1. 在`2rbg`的A链中，即为0(MSE)和1(PRO)两项
+      7. 构造FASTA序列`author_chain_to_sequence`：使用`SCOPData.protein_letters_3to1`查询序列，MSE等非标准残基被归一化为M
+      8. **TODO**
 
 ## 代码实例
 

@@ -27,3 +27,25 @@ categories: [Python, 技巧]
     with ExitStack() as stack:
         fds = [stack.enter_context(open(fn, 'r', encoding='utf-8')) for fn in filenames]
     ```
+
+3. 根据非空有序下标列表选择列表中的子集（`numpy`中的多重下标）
+
+    ```python
+    indices = [1, 3, 5]     # Sorted, non-empty
+    data = ['a', 'b', 'c', 'd', 'e']
+    def process(item): pass
+
+    indices_iter = iter(indices)
+    next_index = next(indices_iter)
+    for index, item in enumerate(data):
+        if index != next_index:
+            continue
+        process(item)
+        try:
+            next_index = next(indices_iter)
+        except StopIteration:
+            break
+    ```
+
+4. 由于实现问题（`fork`），Unix下的`multiprocessing`可以共享全局变量，但不要依赖这一点。还是需要在每个进程函数中传递锁和其他共享对象。
+5. 在多进程`Pool`之间传递锁：<https://stackoverflow.com/a/25558333>

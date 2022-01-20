@@ -325,7 +325,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
          2. 从mmCIF的`_entity_poly_seq`抽取序列信息
       4. `seq_start_num`: 标记内部mmCIF序号的起点（一般为1）
       5. 构造两个Mapping，并收集坐标信息：
-         1. `mmcif_to_author_chain_id`: 将mmCIF内部链编号映射到Author/Biopython正常编号
+         1. `mmcif_to_author_chain_id`: 将mmCIF内部链编号映射到Author/Biopython正常编号（我们的代码也如此做）
          2. `seq_to_structure_mappings`: `Dict[chain_id, Dict[seq_idx, ResidueAtPosition]]`
             1. 此处`seq_idx`减去了`seq_start_num`，下标从0开始
             2. `ResidueAtPosition`包含`ResiduePosition`对象，它表示残基在mmCIF文件内部的坐标（`seq_start_num`开始）
@@ -333,7 +333,7 @@ local_repo: https://github.com/fyabc/off-AF2/blob/master
       6. 然后收集所有没有得到的坐标信息，也加入`seq_to_structure_mappings`中，无位置信息
          1. 在`2rbg`的A链中，即为0(MSE)和1(PRO)两项
       7. 构造FASTA序列`author_chain_to_sequence`：使用`SCOPData.protein_letters_3to1`查询序列，MSE等非标准残基被归一化为M
-      8. **TODO**
+      8. 输出MmcifObject，其中的序列包含了PDB sequence（UniProt序列的子列）
 
 ## 代码实例
 

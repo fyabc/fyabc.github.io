@@ -107,9 +107,9 @@ In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.
 *arXiv, 2020.*
     <!-- 4. MAT; No SCI/EI -->
 
-1. Back Translation for Molecule Generation \[PDF\]
+1. Back Translation for Molecule Generation \[PDF\] \[[link](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btab817/6454941)\]
 **<u>Yang Fan</u>**, Yingce Xia, Jinhua Zhu, Lijun Wu, Shufang Xie, Tao Qin
-Submitted to *Bioinformatics*, 2021
+**Bioinformatics**, 2021
     <!-- 9. BT4MolGen; No SCI/EI -->
 
 1. Microsoft Research Asia’s Systems for WMT19 \[[PDF](http://statmt.org/wmt19/pdf/53/WMT48.pdf)\]  

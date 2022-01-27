@@ -13,3 +13,4 @@ categories: [Shell, 技巧]
 3. PowerShell读写环境变量：
    1. `$Env:SomeEnvVar = 'True'`
    2. `echo $Env:SomeEnvVar`
+4. Bash 删除所有匹配的行，除了第一行（用于若干CSV文件合成等）：`sed '1!{/^header/d;}' in.txt > out.txt`

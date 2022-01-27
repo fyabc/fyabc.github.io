@@ -17,7 +17,7 @@ categories: [VSCode, PyCharm, JetBrains, SSH]
 3. 通过Jumptainer登入GCR Linux GPU Servers (GCRAZGDLxxx)
    1. 在本机使用Local forwarding登入跳板机：`ssh -L 22:10.8.17.108:22 FAREAST.t-yafan@jumptainer.westus2.cloudapp.azure.com -p 22222`
       1. `-L port1:address:port2`：指将`localhost:port1`绑定到`address:port2`上
-      2. 在跳板机上运行`watch -n 60 ls`，防止中途断掉
+      2. 可选：在跳板机上运行`watch -n 60 ls`，防止中途断掉
    2. 在本机登入目标机器：`ssh FAREAST.t-yafan@127.0.0.1`
 
 4. 连接

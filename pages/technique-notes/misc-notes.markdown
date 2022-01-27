@@ -25,3 +25,21 @@ categories: [杂项，技巧]
 10. 更新WSL的Ubuntu系统本身：<https://wsl-guide-cn.readthedocs.io/zh_CN/latest/update.html>
     1. <https://clay-atlas.com/us/blog/2020/08/03/linux-en-note-how-to-upgrade-to-new-release/>
 11. Copy folders using scp on 跳板机：先打开`ssh gcrazgdl0180-scp`，然后`scp -P 22222 -r localhost:/scratch/my_output/valid-nox-000[7-9]?? .`
+12. 使用`amlt`提交CPU job：
+    1. YAML: `target.name: itplabrr1cl1`
+    2. YAML: `target.vc: gcrcpu`
+    3. YAML: `sku: 64C8`
+    4. 在CPU上运行PyTorch时会遇到[错误](https://github.com/pytorch/pytorch/issues/37377)：
+
+      ```text
+      Error: mkl-service + Intel® MKL: MKL_THREADING_LAYER=INTEL is incompatible with libgomp.so.1 library.
+      ```
+
+      在运行前设置环境变量：`MKL_THREADING_LAYER=GNU`即可。
+13. Bug: 远程生成的TensorBoard Events在本地打开出错（E0111）
+    1. 在远程机器上运行TensorBoard：<https://stackoverflow.com/a/40413202>
+       1. 利用Local forwarding，使用`ssh -L 16006:127.0.0.1:6006 -p 30704 t-yafan@phlrr3104.guest.corp.microsoft.com`连接远程机器，在远程机器上启动TensorBoard
+       2. 然后本地`http://localhost:16006`即可运行。
+14. GCR上挂载Blob
+    1. <https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux>
+    2. Command: `sudo blobfuse ~/mycontainer --tmp-path=/mnt/blobfusetmp  --config-file=/home/t-yafan/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o allow_other`

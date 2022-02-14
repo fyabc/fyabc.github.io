@@ -44,3 +44,4 @@ categories: [杂项，技巧]
     1. <https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux>
     2. Command: `sudo blobfuse ~/mycontainer --tmp-path=/mnt/blobfusetmp  --config-file=/home/t-yafan/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o allow_other`
 15. Windows全屏游戏任务栏不隐藏：重启文件资源管理器
+16. `amlt`设置默认实验：<https://phillytools.azurewebsites.net/main/advanced/0_default_experiments.html>

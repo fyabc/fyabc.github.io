@@ -128,13 +128,13 @@ Lijun Wu, Shufang Xie, Yingce Xia, **<u>Yang Fan</u>**, Tao Qin, Jianhuang Lai, 
 *The Thirty-seventh International Conference on Machine Learning* (**ICML-2020**)
     <!-- 7. SeqGen-MixRep; No SCI/EI -->
 
-1. Entity-Enhanced Neural Machine Translation  
+1. End-to-end Entity-Aware Neural Machine Translation \[PDF\] \[[link](https://link.springer.com/article/10.1007/s10994-021-06073-9)\]  
 Shufang Xie, Yingce Xia, Lijun Wu, Yiqing Huang, **<u>Yang Fan</u>**, Tao Qin  
-*Asian Conference on Machine Learning 2021* (**ACML-2021**)
+*Machine Learning 2022* (**ML-2022**)
     <!-- 8. EntityEnhanced-NMT; No SCI/EI -->
 
-1. Learning to Teach for Function Space
-Yang Fan, Fei Tian, Yingce Xia, Lijun Wu, Tao Qin, Xiang-Yang Li
+1. Learning to Teach for Function Space  
+Yang Fan, Fei Tian, Yingce Xia, Lijun Wu, Tao Qin, Xiang-Yang Li  
     <!-- 10. L2T-FS; No SCI/EI -->
 
 ----

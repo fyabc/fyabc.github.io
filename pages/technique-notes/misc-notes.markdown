@@ -6,6 +6,8 @@ permalink: /technique-notes/misc-notes
 categories: [杂项，技巧]
 ---
 
+## General
+
 1. Linux挂载Azure Blob: <https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux>
 2. 使用VSCode在线浏览GitHub仓库：在仓库的GitHub目录下，将`github.com`改为`github1s.com`
 3. All-In-One Note: [Notion](https://www.notion.so/zh-cn)
@@ -44,4 +46,25 @@ categories: [杂项，技巧]
     1. <https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux>
     2. Command: `sudo blobfuse ~/mycontainer --tmp-path=/mnt/blobfusetmp  --config-file=/home/t-yafan/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 -o allow_other`
 15. Windows全屏游戏任务栏不隐藏：重启文件资源管理器
-16. `amlt`设置默认实验：<https://phillytools.azurewebsites.net/main/advanced/0_default_experiments.html>
+16. `amlt`备忘录
+    1. `amlt`设置默认实验：<https://phillytools.azurewebsites.net/main/advanced/0_default_experiments.html>
+    2. `amlt run`报错：
+
+        ```text
+        CC Connection error while attempting to download azcopy 10.12.2. You could also install the specified azcopy version to C:\Users\v-yaf\AppData\Roaming\amulet manually. (<urlopen error [Errno 11001] getaddrinfo failed>)
+        ```
+
+        解决方法：在Python中：
+
+        ```python
+        from amlt import azcopy
+        iloc = azcopy._get_default_install_location()
+        azcopy.AzCopy.install_azcopy(iloc)
+        # 可以在文件夹下检查iloc是否安装了azcopy
+        ```
+
+    3. 连接SSH：`amlt ssh :job_name`
+
+## Visual Studio Code
+
+1. VSCode隐藏某些文件：<https://paulnelson.ca/posts/hiding-pycache-files-in-vscode>

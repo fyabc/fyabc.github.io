@@ -6,6 +6,8 @@ permalink: /technique-notes/python-notes
 categories: [Python, 技巧]
 ---
 
+## 核心语法与标准库
+
 1. 分割字符串时保留分隔符
 
     ```python
@@ -49,3 +51,11 @@ categories: [Python, 技巧]
 
 4. 由于实现问题（`fork`），Unix下的`multiprocessing`可以共享全局变量，但不要依赖这一点。还是需要在每个进程函数中传递锁和其他共享对象。
 5. 在多进程`Pool`之间传递锁：<https://stackoverflow.com/a/25558333>
+6. Python打包：参考<https://packaging.python.org/en/latest/tutorials/packaging-projects/#packaging-python-projects>
+   1. 核心步骤：`pyproject.toml`, `setup.cfg`, `python -m build`, `python -m twine upload --repository testpypi dist/*`
+
+## 好用的第三方库
+
+1. [`pubchempy`](https://zhuanlan.zhihu.com/p/58596574)
+   1. PubChem分子数据库的Python接口
+   2. [Doc](https://pubchempy.readthedocs.io/en/latest/)

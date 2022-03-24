@@ -34,6 +34,7 @@ categories: [VSCode, PyCharm, JetBrains, SSH]
 2. 设置储存的配置文件，通常设为`~/.ssh/vscode_config`
 3. 远程资源管理器中添加新的SSH目标：命令中加入`-i`私钥
 4. 命令会转化为配置信息记录在配置文件中
+5. 在Remote Explorer中打开存储的配置，会新打开一个窗口，直接修改远程代码
 
 ## PyCharm连接SSH
 

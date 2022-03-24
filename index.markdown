@@ -31,7 +31,7 @@ Building 2, No. 5 DanLing Street, Haidian District, Beijing, China.
 
 ## Bio
 
-Yang Fan is a Ph.D candidate of [University of Science and Technology of China (USTC)](https://www.ustc.edu.cn/), and will graduate in Jun. 2022. He is also a research Intern of [Machine Learning Group](https://www.microsoft.com/en-us/research/group/machine-learning-research-group/) in [Microsoft Research Asia (MSRA)](https://www.msra.cn/) under the [joint Ph.D. program](https://www.msra.cn/zh-cn/connections/academic-programs/joint-phd) between MSRA and USTC, advised by [Prof. Tao Qin](https://www.microsoft.com/en-us/research/people/taoqin/) and [Prof. Xiang-Yang Li](https://staff.ustc.edu.cn/~xiangyangli/).  
+Yang Fan is a Ph.D candidate of [University of Science and Technology of China (USTC)](https://www.ustc.edu.cn/), and will graduate in Jun. 2022. He is also a research Intern of [Machine Learning Group](https://www.microsoft.com/en-us/research/group/machine-learning-research-group/) in [Microsoft Research Asia (MSRA)](https://www.msra.cn/) under the [joint Ph.D. program](https://www.msra.cn/zh-cn/connections/academic-programs/joint-phd) between MSRA and USTC, advised by [Prof. Tao Qin](https://www.microsoft.com/en-us/research/people/taoqin/) and [Prof. Xiang-Yang Li](https://staff.ustc.edu.cn/~Xiang-Yangli/).  
 He has a wide range of research interests in artificial intelligence, including deep learning, natural language processing, learning to teach, AI for medicine, etc.  
 You can refer to the personal page: <https://fyabc.github.io/>.
 
@@ -88,26 +88,26 @@ In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.
 ## Publications
 
 1. Learning to Reweight with Deep Interactions \[[PDF](https://www.aaai.org/AAAI21Papers/AAAI-9254.FanY.pdf)\]  
-**<u>Yang Fan</u>**, Yingce Xia, Lijun Wu, Shufang Xie, Weiqing Liu, Jiang Bian, Tao Qin, Xiangyang Li  
+**<u>Yang Fan</u>**, Yingce Xia, Lijun Wu, Shufang Xie, Weiqing Liu, Jiang Bian, Tao Qin, Xiang-Yang Li  
 *The 35th AAAI Conference on Artificial Intelligence* (**AAAI-2021**)
     <!-- 3. L2T-DeepInteraction; SCI/EI in future -->
 
 1. Searching Better Architectures for Neural Machine Translation \[[PDF](https://ieeexplore.ieee.org/document/9095246)\]  
-**<u>Yang Fan</u>**, Fei Tian, Yingce Xia, Tao Qin, Xiangyang Li, Tie-Yan Liu  
+**<u>Yang Fan</u>**, Fei Tian, Yingce Xia, Tao Qin, Xiang-Yang Li, Tie-Yan Liu  
 *IEEE Transactions on Audio, Speech and Language Processing* (**TASLP**), *18 May 2020, Volume 28, Pages 1574-1585*
     <!-- 2. NAS4NMT; SCI=WOS:000461852001004 / EI=20202508840070 -->
 
 1. Learning to Teach \[[PDF](https://openreview.net/pdf?id=HJewuJWCZ)\]  
-**<u>Yang Fan</u>**, Fei Tian, Tao Qin, Xiangyang Li, Tie-Yan Liu  
+**<u>Yang Fan</u>**, Fei Tian, Tao Qin, Xiang-Yang Li, Tie-Yan Liu  
 *The Sixth International Conference on Learning Representations* (**ICLR-2018**)
     <!-- 1. L2T; No SCI; EI=20193507364161 -->
 
 1. Multi-branch Attentive Transformer \[[PDF](https://arxiv.org/pdf/2006.10270.pdf)\]  
-**<u>Yang Fan</u>**, Shufang Xie, Yingce Xia, Lijun Wu, Tao Qin, Xiangyang Li, Tie-Yan Liu  
+**<u>Yang Fan</u>**, Shufang Xie, Yingce Xia, Lijun Wu, Tao Qin, Xiang-Yang Li, Tie-Yan Liu  
 *arXiv, 2020.*
     <!-- 4. MAT; No SCI/EI -->
 
-1. Back Translation for Molecule Generation \[PDF\] \[[link](https://academic.oup.com/bioinformatics/article-abstract/38/5/1244/6454941)\]
+1. Back Translation for Molecule Generation \[PDF\] \[[link](https://academic.oup.com/bioinformatics/article-abstract/38/5/1244/6454941)\]  
 **<u>Yang Fan</u>**, Yingce Xia, Jinhua Zhu, Lijun Wu, Shufang Xie, Tao Qin
 **Bioinformatics**, *1 March 2022, Volume 38, Issue 5, Pages 1244-1251*
     <!-- 9. BT4MolGen; No SCI/EI -->
@@ -132,6 +132,10 @@ Lijun Wu, Shufang Xie, Yingce Xia, **<u>Yang Fan</u>**, Tao Qin, Jianhuang Lai, 
 Shufang Xie, Yingce Xia, Lijun Wu, Yiqing Huang, **<u>Yang Fan</u>**, Tao Qin  
 *Asian Conference on Machine Learning 2021* (**ACML-2021**)
     <!-- 8. EntityEnhanced-NMT; No SCI/EI -->
+
+1. Learning to Teach for Function Space
+Yang Fan, Fei Tian, Yingce Xia, Lijun Wu, Tao Qin, Xiang-Yang Li
+    <!-- 10. L2T-FS; No SCI/EI -->
 
 ----
 

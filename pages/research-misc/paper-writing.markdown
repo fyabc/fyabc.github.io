@@ -6,6 +6,13 @@ permalink: /research-misc/paper-writing
 categories: [论文写作]
 ---
 
+## 通用
+
+- Generally speaking, ...
+- adopt (采用)
+- deficiency (缺陷) 与 efficiency相对
+
+
 ## Abstract
 
 ## Introduction
@@ -14,6 +21,7 @@ categories: [论文写作]
   - We propose a new model, *(model-name)*, in which we ...
   - ...
   - ...
+- A common **analogy, apt for** XXX, is to think of ... (一个适用于XXX的类比是考虑...)(用于在介绍中将概念类比到其他常识领域)
 
 ## Related Work
 
@@ -22,6 +30,7 @@ categories: [论文写作]
 - Clustered Attention, **introduced in** XXX ...
 - Linformer **resorts to** (诉诸) a low-rank projection on the length dimension.
 - Most of the **aforementioned** (之前的) approaches/work ...
+- XXX areas/methods are **surging recently** (迅速发展), due to the **advancement** of YYY.
 
 ## Methodology / Architecture / Algorithm
 

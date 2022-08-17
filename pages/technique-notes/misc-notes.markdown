@@ -64,7 +64,16 @@ categories: [杂项，技巧]
         ```
 
     3. 连接SSH：`amlt ssh :job_name`
+17. Windows安装ffmpeg:
+    1. 下载：<https://github.com/GyanD/codexffmpeg/releases>
+    2. 解压，将bin目录加入PATH。
 
 ## Visual Studio Code
 
 1. VSCode隐藏某些文件：<https://paulnelson.ca/posts/hiding-pycache-files-in-vscode>
+
+## Pycharm
+
+1. Pycharm line profiler插件
+   1. 依赖line_profiler_pycharm包，用法类似于line profiler，profile装饰对应的函数
+   2. 远程解释器下运行：运行的line profiler保存在远程文件上，下载下来，把里面的文件路径对应改一下，然后**需要重新普通运行一下（不是profile）同一个配置**，刷新掉错误的配置，然后右键点击`pclprof`文件，选择**Visualize Profile**选项即可。

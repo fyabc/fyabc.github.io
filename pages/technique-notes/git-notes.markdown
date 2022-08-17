@@ -11,3 +11,7 @@ categories: [Git, GitHub, 技巧]
 ### GitHub Actions
 
 1. 教程：<https://zhuanlan.zhihu.com/p/164744104>
+
+### Personal Access Tokens
+
+1. Pycharm access token: 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

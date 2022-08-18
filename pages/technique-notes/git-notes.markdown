@@ -14,4 +14,4 @@ categories: [Git, GitHub, 技巧]
 
 ### Personal Access Tokens
 
-1. Pycharm access token: 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
+1. Pycharm access token: see my mobile notes.

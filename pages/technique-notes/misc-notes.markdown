@@ -77,3 +77,8 @@ categories: [杂项，技巧]
 1. Pycharm line profiler插件
    1. 依赖line_profiler_pycharm包，用法类似于line profiler，profile装饰对应的函数
    2. 远程解释器下运行：运行的line profiler保存在远程文件上，下载下来，把里面的文件路径对应改一下，然后**需要重新普通运行一下（不是profile）同一个配置**，刷新掉错误的配置，然后右键点击`pclprof`文件，选择**Visualize Profile**选项即可。
+
+## Powershell
+
+1. 安装时遇到"Only Core Types are supported in this language mode"问题
+   1. <https://cyberark-customers.force.com/s/article/language-mode-error>

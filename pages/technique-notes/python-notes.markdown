@@ -54,6 +54,20 @@ categories: [Python, 技巧]
 6. Python打包：参考<https://packaging.python.org/en/latest/tutorials/packaging-projects/#packaging-python-projects>
    1. 核心步骤：`pyproject.toml`, `setup.cfg`, `python -m build`, `python -m twine upload --repository testpypi dist/*`
 
+## IPython技巧
+
+1. 带命令的函数
+
+    ```python
+    command = '/home/t-yafan/workspace/fairseq-v0.8.0/scripts/molecule/tgt2drug/run_docking.py {pdb_id} \'{smiles}\' --xyz {x} {y} {z}'
+
+    def make_cmd(line):
+        index, pdb_id, smiles = line
+        x, y, z = rows[index]['center_x'], rows[index]['center_y'], rows[index]['center_z']
+        real_cmd = command.format(pdb_id=pdb_id, smiles=smiles, x=x, y=y, z=z)
+        !python {real_cmd} -v
+    ```
+
 ## 好用的第三方库
 
 1. [`pubchempy`](https://zhuanlan.zhihu.com/p/58596574)

@@ -79,6 +79,8 @@ In the first OGB Large-Scale Challenge [(OGB-LSC)](https://ogb.stanford.edu/kddc
 In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.org/wmt19/translation-task.html))  
 \[[PDF](http://statmt.org/wmt19/pdf/53/WMT48.pdf)\] \[[News](https://www.msra.cn/zh-cn/news/features/wmt-2019)\] \[[Leaderboard](http://matrix.statmt.org/?metric%5Bid%5D=5&mode=bestn&test_set%5Bid%5D=27)\]
 
+- *2020*, Huawei Scholarship
+
 - *2017*, Bao Gang Education Scholarship
 
 <!-- - *2015*, Scholarship for Outstanding Students (first prize) -->
@@ -94,7 +96,7 @@ In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.
 1. Learning to Reweight with Deep Interactions \[[PDF](https://www.aaai.org/AAAI21Papers/AAAI-9254.FanY.pdf)\]  
 **<u>Yang Fan</u>**, Yingce Xia, Lijun Wu, Shufang Xie, Weiqing Liu, Jiang Bian, Tao Qin, Xiang-Yang Li  
 *The 35th AAAI Conference on Artificial Intelligence* (**AAAI-2021**)
-    <!-- 3. L2T-DeepInteraction; SCI/EI in future -->
+    <!-- 3. L2T-DeepInteraction; SCI=WOS:000680423507057 / EI=20200566781 -->
 
 1. Searching Better Architectures for Neural Machine Translation \[[PDF](https://ieeexplore.ieee.org/document/9095246)\]  
 **<u>Yang Fan</u>**, Fei Tian, Yingce Xia, Tao Qin, Xiang-Yang Li, Tie-Yan Liu  
@@ -106,21 +108,21 @@ In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.
 *The Sixth International Conference on Learning Representations* (**ICLR-2018**)
     <!-- 1. L2T; No SCI; EI=20193507364161 -->
 
-1. Multi-branch Attentive Transformer \[[PDF](https://arxiv.org/pdf/2006.10270.pdf)\]  
+1. Multi-branch Attentive Transformer \[[PDF](https://arxiv.org/pdf/2006.10270.pdf)\] \[[link](https://arxiv.org/abs/2006.10270)\]  
 **<u>Yang Fan</u>**, Shufang Xie, Yingce Xia, Lijun Wu, Tao Qin, Xiang-Yang Li, Tie-Yan Liu  
 *arXiv, 2020.*
-    <!-- 4. MAT; No SCI/EI -->
+    <!-- 4. MAT; SCI = INSPEC:19982207 / EI = 20200544868 -->
 
 1. Back Translation for Molecule Generation \[[PDF](./assets/local-papers/BackTranslationForMoleculeGeneration.pdf)\] \[[link](https://academic.oup.com/bioinformatics/article-abstract/38/5/1244/6454941)\]  
 **<u>Yang Fan</u>**, Yingce Xia, Jinhua Zhu, Lijun Wu, Shufang Xie, Tao Qin  
 **Bioinformatics**, *1 March 2022, Volume 38, Issue 5, Pages 1244-1251*
-    <!-- 9. BT4MolGen; No SCI/EI -->
+    <!-- 9. BT4MolGen; SCI=WOS:000776280200009 / EI = null -->
     <!-- Published in 2021.12.07 -->
 
 1. Microsoft Research Asia’s Systems for WMT19 \[[PDF](http://statmt.org/wmt19/pdf/53/WMT48.pdf)\]  
 Yingce Xia, Xu Tan, Fei Tian, Fei Gao, Weicong Chen, **<u>Yang Fan</u>**, Linyuan Gong, Yichong Leng, Renqian Luo, Yiren Wang, Lijun Wu, Jinhua Zhu, Tao Qin, and Tie-Yan Liu  
 *The Fourth Conference on Machine Translation* (**WMT-2019**)
-    <!-- 6. WMT19; SCI=WOS:000538566200048 / No EI -->
+    <!-- 6. WMT19; SCI = WOS:000538566200048 / EI = 20215011327406 -->
 
 1. Learning to Teach with Dynamic Loss Functions \[[PDF](http://papers.nips.cc/paper/7882-learning-to-teach-with-dynamic-loss-functions.pdf)\]  
 Lijun Wu, Fei Tian, Yingce Xia, **<u>Yang Fan</u>**, Tao Qin, Jianhuang Lai, Tie-Yan Liu  
@@ -130,15 +132,15 @@ Lijun Wu, Fei Tian, Yingce Xia, **<u>Yang Fan</u>**, Tao Qin, Jianhuang Lai, Tie
 1. Sequence Generation with Mixed Representations \[[PDF](http://proceedings.mlr.press/v119/wu20e/wu20e.pdf)\]  
 Lijun Wu, Shufang Xie, Yingce Xia, **<u>Yang Fan</u>**, Tao Qin, Jianhuang Lai, Tie-Yan Liu  
 *The Thirty-seventh International Conference on Machine Learning* (**ICML-2020**)
-    <!-- 7. SeqGen-MixRep; No SCI/EI -->
+    <!-- 7. SeqGen-MixRep; SCI = null / EI = 20211910328131 -->
 
 1. End-to-end Entity-Aware Neural Machine Translation \[PDF\] \[[link](https://link.springer.com/article/10.1007/s10994-021-06073-9)\]  
 Shufang Xie, Yingce Xia, Lijun Wu, Yiqing Huang, **<u>Yang Fan</u>**, Tao Qin  
 *Machine Learning 2022* (**ML-2022**)
-    <!-- 8. EntityEnhanced-NMT; No SCI/EI -->
+    <!-- 8. EntityEnhanced-NMT; SCI = WOS:000741937700001 / EI = 20220311472890 -->
 
 1. Learning to Teach for Function Space  
-Yang Fan, Fei Tian, Yingce Xia, Lijun Wu, Tao Qin, Xiang-Yang Li  
+**<u>Yang Fan</u>**, Fei Tian, Yingce Xia, Lijun Wu, Tao Qin, Xiang-Yang Li  
     <!-- 10. L2T-FS; No SCI/EI -->
 
 ----

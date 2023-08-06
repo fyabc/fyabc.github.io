@@ -57,7 +57,7 @@ You can refer to the personal page: <https://fyabc.github.io/>.
 
 ## Research Interests
 
-- **Large Language Models (LLMs)**: Research about training, fine-tuning and data engineering of large language models.
+- **Large Language Models (LLMs)**: Training, fine-tuning and data engineering of large language models.
 
 - **Learning to Teach**: A general meta-learning framework to automatically guide the training of AI tasks with a teacher model.
 

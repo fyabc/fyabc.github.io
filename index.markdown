@@ -12,8 +12,8 @@ description:
 
 <img id="personal-photo" src="/assets/images/YangFan.jpg" alt="Personal Photo" align="left" />
 
-Ph.D Candidate  
-[School of Computer Science and Technology](https://cs.ustc.edu.cn/), [University of Science and Technology of China (USTC)](https://www.ustc.edu.cn/)
+Senior Algorithm Engineer
+[DAMO Academy, Alibaba Group](https://damo.alibaba.com)
 
 [Google Scholar](https://scholar.google.com/citations?user=YQPMTJsAAAAJ&hl=zh-CN) \| [GitHub](https://github.com/fyabc)
 
@@ -31,15 +31,15 @@ Building 2, No. 5 DanLing Street, Haidian District, Beijing, China.
 
 ## Bio
 
-Yang Fan is a Ph.D candidate of [University of Science and Technology of China (USTC)](https://www.ustc.edu.cn/), and will graduate in Jun. 2022. He is also a research Intern of [Machine Learning Group](https://www.microsoft.com/en-us/research/group/machine-learning-research-group/) in [Microsoft Research Asia (MSRA)](https://www.msra.cn/) under the [joint Ph.D. program](https://www.msra.cn/zh-cn/connections/academic-programs/joint-phd) between MSRA and USTC, advised by [Prof. Tao Qin](https://www.microsoft.com/en-us/research/people/taoqin/) and [Prof. Xiang-Yang Li](https://staff.ustc.edu.cn/~Xiang-Yangli/).  
-He has a wide range of research interests in artificial intelligence, including deep learning, natural language processing, learning to teach, AI for medicine, etc.  
+Yang Fan is a Senior Algorithm Engineer of [DAMO Acadamy, Alibaba Group](https://damo.alibaba.com).
+He has a wide range of research interests in artificial intelligence, including large language models, deep learning, natural language processing, learning to teach, AI for medicine, etc.  
 You can refer to the personal page: <https://fyabc.github.io/>.
 
 ----
 
 ## Education
 
-- *Sep. 2017 - Now*: School of Computer Science and Technology, University of Science and Technology of China, Doctor of Philosophy (Ph.D.)
+- *Sep. 2017 - Jun. 2022*: School of Computer Science and Technology, University of Science and Technology of China, Doctor of Philosophy (Ph.D.)
 
 - *Sep. 2013 - Jun. 2017*: School of Computer Science and Technology, University of Science and Technology of China, Bachelor of Science (B.S.)
 
@@ -47,13 +47,17 @@ You can refer to the personal page: <https://fyabc.github.io/>.
 
 ## Experiences
 
-- *Jul. 2018 - Now*: Research Intern, Machine Learning Group, Microsoft Research Asia, Mentor: [Prof. Tao Qin](https://www.microsoft.com/en-us/research/people/taoqin/)
+- *Jul. 2022 - Now*: Senior Algorithm Engineer, DAMO Academy, Alibaba Group.
+
+- *Jul. 2018 - Jun. 2022*: Research Intern, Machine Learning Group, Microsoft Research Asia, Mentor: [Prof. Tao Qin](https://www.microsoft.com/en-us/research/people/taoqin/)
 
 - *Jul. 2016 - Jun. 2017*: Research Intern, Machine Learning Group, Microsoft Research Asia, Mentor: [Prof. Tao Qin](https://www.microsoft.com/en-us/research/people/taoqin/)
 
 ----
 
 ## Research Interests
+
+- **Large Language Models (LLMs)**: Research about training, fine-tuning and data engineering of large language models.
 
 - **Learning to Teach**: A general meta-learning framework to automatically guide the training of AI tasks with a teacher model.
 

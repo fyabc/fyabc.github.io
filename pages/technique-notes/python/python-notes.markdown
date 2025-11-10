@@ -2,7 +2,7 @@
 layout: post
 title: Python技巧
 description: Python脚本技巧知识
-permalink: /technique-notes/python-notes
+permalink: /technique-notes/python/python-notes
 categories: [Python, 技巧]
 ---
 
@@ -73,3 +73,5 @@ categories: [Python, 技巧]
 1. [`pubchempy`](https://zhuanlan.zhihu.com/p/58596574)
    1. PubChem分子数据库的Python接口
    2. [Doc](https://pubchempy.readthedocs.io/en/latest/)
+2. Rich
+   1. Rich logging module

@@ -13,7 +13,7 @@ description:
 <img id="personal-photo" src="/assets/images/YangFan.jpg" alt="Personal Photo" align="left" />
 
 Senior Algorithm Engineer
-[DAMO Academy, Alibaba Group](https://damo.alibaba.com)
+[Tongyi AI Lab, Alibaba Group](https://tongyi.aliyun.com/welcome)
 
 [Google Scholar](https://scholar.google.com/citations?user=YQPMTJsAAAAJ&hl=zh-CN) \| [GitHub](https://github.com/fyabc)
 
@@ -65,8 +65,6 @@ You can refer to the personal page: <https://fyabc.github.io/>.
 
 - **Neural Machine Translation**: Train a deep neural network to translate from on language to another. Focusing more on real-world tasks.
 
-- **AI for Medicine**: Use AI and deep learning technologies to assist in drug discovery and disease treatment.
-
 ----
 
 ## Honors & Awards
@@ -92,6 +90,24 @@ In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.
 ----
 
 ## Publications
+
+1. Qwen Technical Report \[[PDF](https://arxiv.org/pdf/2309.16609)\]  
+   Qwen Team
+
+1. Qwen2 Technical Report \[[PDF](https://cdn.jsdelivr.net/gh/yanfeng98/paper-is-all-you-need/papers/00069-Qwen3_Technical_Report.pdf)\]  
+   Qwen Team
+
+1. Qwen2-VL: Enhancing Vision-Language Model's Perception of the World at Any Resolution \[[PDF](https://arxiv.org/pdf/2409.12191)\]  
+   Peng Wang, Shuai Bai, Sinan Tan, Shijie Wang, Zhihao Fan, Jinze Bai, Keqin Chen, Xuejing Liu, Jialin Wang, Wenbin Ge, **<u>Yang Fan</u>**, Kai Dang, Mengfei Du, Xuancheng Ren, Rui Men, Dayiheng Liu, Chang Zhou, Jingren Zhou, Junyang Lin
+
+1. Qwen2.5-Coder Technical Report \[[PDF](https://arxiv.org/pdf/2409.12186)\]  
+   Binyuan Hui, Jian Yang, Zeyu Cui, Jiaxi Yang, Dayiheng Liu, Lei Zhang, Tianyu Liu, Jiajun Zhang, Bowen Yu, Keming Lu, Kai Dang, **<u>Yang Fan</u>**, Yichang Zhang, An Yang, Rui Men, Fei Huang, Bo Zheng, Yibo Miao, Shanghaoran Quan, Yunlong Feng, Xingzhang Ren, Xuancheng Ren, Jingren Zhou, Junyang Lin
+
+1. Qwen2.5-Omni Technical Report \[[PDF](https://arxiv.org/pdf/2503.20215)\]  
+   Jin Xu, Zhifang Guo, Jinzheng He, Hangrui Hu, Ting He, Shuai Bai, Keqin Chen, Jialin Wang, **<u>Yang Fan</u>**, Kai Dang, Bin Zhang, Xiong Wang, Yunfei Chu, Junyang Lin
+
+1. Qwen3 Technical Report \[[PDF](https://arxiv.org/pdf/2505.09388)\]  
+   Qwen Team
 
 1. Learning to Reweight with Deep Interactions \[[PDF](https://www.aaai.org/AAAI21Papers/AAAI-9254.FanY.pdf)\]  
 **<u>Yang Fan</u>**, Yingce Xia, Lijun Wu, Shufang Xie, Weiqing Liu, Jiang Bian, Tao Qin, Xiang-Yang Li  

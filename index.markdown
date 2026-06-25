@@ -12,7 +12,7 @@ description:
 
 <img id="personal-photo" src="/assets/images/YangFan.jpg" alt="Personal Photo" align="left" />
 
-Senior Algorithm Engineer
+Algorithm Expert
 [Tongyi AI Lab, Alibaba Group](https://tongyi.aliyun.com/welcome)
 
 [Google Scholar](https://scholar.google.com/citations?user=YQPMTJsAAAAJ&hl=zh-CN) \| [GitHub](https://github.com/fyabc)
@@ -31,7 +31,7 @@ No. 1008 Dengcai Street, Sandun Town, Xihu District, Hangzhou, Zhejiang Province
 
 ## Bio
 
-Yang Fan is a Senior Algorithm Engineer at [DAMO Academy, Alibaba Group](https://damo.alibaba.com).
+Yang Fan is an Algorithm Expert at [DAMO Academy, Alibaba Group](https://damo.alibaba.com).
 He has a wide range of research interests in artificial intelligence, including large language models, deep learning, natural language processing, learning to teach, AI for Science, etc.
 More information can be found at <https://fyabc.github.io/>.
 
@@ -47,7 +47,9 @@ More information can be found at <https://fyabc.github.io/>.
 
 ## Experiences
 
-- *Jul. 2022 - Present*: Senior Algorithm Engineer, DAMO Academy, Alibaba Group.
+- *Apr. 2025 - Present*: Algorithm Expert, DAMO Academy, Alibaba Group.
+
+- *Jul. 2022 - Mar. 2025*: Senior Algorithm Engineer, DAMO Academy, Alibaba Group.
 
 - *Jul. 2018 - Jun. 2022*: Research Intern, Machine Learning Group, Microsoft Research Asia, Mentor: [Prof. Tao Qin](https://www.microsoft.com/en-us/research/people/taoqin/)
 

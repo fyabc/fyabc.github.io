@@ -21,7 +21,7 @@ Email: [1115977374@qq.com](mailto:1115977374@qq.com)
 
 Personal page: <https://fyabc.github.io/>
 
-Building 2, No. 5 DanLing Street, Haidian District, Beijing, China.
+No. 1008 Dengcai Street, Sandun Town, Xihu District, Hangzhou, Zhejiang Province, China
 
 <!-- ----
 
@@ -31,9 +31,9 @@ Building 2, No. 5 DanLing Street, Haidian District, Beijing, China.
 
 ## Bio
 
-Yang Fan is a Senior Algorithm Engineer of [DAMO Acadamy, Alibaba Group](https://damo.alibaba.com).
-He has a wide range of research interests in artificial intelligence, including large language models, deep learning, natural language processing, learning to teach, AI for medicine, etc.  
-You can refer to the personal page: <https://fyabc.github.io/>.
+Yang Fan is a Senior Algorithm Engineer at [DAMO Academy, Alibaba Group](https://damo.alibaba.com).
+He has a wide range of research interests in artificial intelligence, including large language models, deep learning, natural language processing, learning to teach, AI for Science, etc.
+More information can be found at <https://fyabc.github.io/>.
 
 ----
 
@@ -47,7 +47,7 @@ You can refer to the personal page: <https://fyabc.github.io/>.
 
 ## Experiences
 
-- *Jul. 2022 - Now*: Senior Algorithm Engineer, DAMO Academy, Alibaba Group.
+- *Jul. 2022 - Present*: Senior Algorithm Engineer, DAMO Academy, Alibaba Group.
 
 - *Jul. 2018 - Jun. 2022*: Research Intern, Machine Learning Group, Microsoft Research Asia, Mentor: [Prof. Tao Qin](https://www.microsoft.com/en-us/research/people/taoqin/)
 
@@ -61,9 +61,9 @@ You can refer to the personal page: <https://fyabc.github.io/>.
 
 - **Learning to Teach**: A general meta-learning framework to automatically guide the training of AI tasks with a teacher model.
 
-- **Neural Architecture Search**: Automatically discover better architectures for AI tasks, especially for natural language processing tasks.
+- **Neural Architecture Search**: Automatically discovering better architectures for AI tasks, especially for natural language processing tasks.
 
-- **Neural Machine Translation**: Train a deep neural network to translate from on language to another. Focusing more on real-world tasks.
+- **Neural Machine Translation**: Training deep neural networks to translate from one language to another, with a focus on real-world tasks.
 
 ----
 
@@ -73,8 +73,8 @@ You can refer to the personal page: <https://fyabc.github.io/>.
 In the first OGB Large-Scale Challenge [(OGB-LSC)](https://ogb.stanford.edu/kddcup2021/pcqm4m)  
 \[[Leaderboard](https://ogb.stanford.edu/kddcup2021/results/##final_pcqm4m)\]
 
-- *Aug. 2019*, championship on 8 translation tasks  
-In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.org/wmt19/translation-task.html))  
+- *Aug. 2019*, championship in 8 translation tasks  
+In ACL 2019 Fourth Conference on Machine Translation ([WMT19](http://www.statmt.org/wmt19/translation-task.html))  
 \[[PDF](http://statmt.org/wmt19/pdf/53/WMT48.pdf)\] \[[News](https://www.msra.cn/zh-cn/news/features/wmt-2019)\] \[[Leaderboard](http://matrix.statmt.org/?metric%5Bid%5D=5&mode=bestn&test_set%5Bid%5D=27)\]
 
 - *2020*, Huawei Scholarship
@@ -109,6 +109,10 @@ In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.
 1. Qwen3 Technical Report \[[PDF](https://arxiv.org/pdf/2505.09388)\]  
    Qwen Team
 
+1. Qwen-AgentWorld: Language World Models for General Agents \[[PDF](https://arxiv.org/pdf/2606.24597)\] \[[link](https://arxiv.org/abs/2606.24597)\]  
+   Yuxin Zuo, Zikai Xiao, Li Sheng, Fei Huang, Jianhong Tu, Yuxuan Liu, Tianyi Tang, Xiaomeng Hu, Yang Su, Qingfeng Lan, Yantao Liu, Qin Zhu, Yinger Zhang, Bowen Yu, Haiquan Zhao, Haiyang Xu, Jianxin Yang, Jiayang Cheng, Junyang Wang, Lianghao Deng, Mingfeng Xue, Tianyi Bai, **<u>Yang Fan</u>**, Yubo Ma, Yucheng Li, Zeyu Cui, Zhihai Wang, Zhihui Xie, Zhuorui Ye, An Yang, Dayiheng Liu, Jingren Zhou, Ning Ding  
+   *arXiv, 2026.*
+
 1. Learning to Reweight with Deep Interactions \[[PDF](https://www.aaai.org/AAAI21Papers/AAAI-9254.FanY.pdf)\]  
 **<u>Yang Fan</u>**, Yingce Xia, Lijun Wu, Shufang Xie, Weiqing Liu, Jiang Bian, Tao Qin, Xiang-Yang Li  
 *The 35th AAAI Conference on Artificial Intelligence* (**AAAI-2021**)
@@ -131,7 +135,7 @@ In ACL 2019 fourth conference on machine translation ([WMT19](http://www.statmt.
 
 1. Back Translation for Molecule Generation \[[PDF](./assets/local-papers/BackTranslationForMoleculeGeneration.pdf)\] \[[link](https://academic.oup.com/bioinformatics/article-abstract/38/5/1244/6454941)\]  
 **<u>Yang Fan</u>**, Yingce Xia, Jinhua Zhu, Lijun Wu, Shufang Xie, Tao Qin  
-**Bioinformatics**, *1 March 2022, Volume 38, Issue 5, Pages 1244-1251*
+*Bioinformatics*, *1 March 2022, Volume 38, Issue 5, Pages 1244-1251*
     <!-- 9. BT4MolGen; SCI=WOS:000776280200009 / EI = null -->
     <!-- Published in 2021.12.07 -->
 
@@ -163,6 +167,6 @@ Shufang Xie, Yingce Xia, Lijun Wu, Yiqing Huang, **<u>Yang Fan</u>**, Tao Qin
 
 ## Programming Skills
 
-1. *Programming Languages*: Master user of **Python**, frequent user of **C++** and **LaTeX**
+1. *Programming Languages*: Proficient in **Python**, frequent user of **C++** and **LaTeX**
 
-2. *Deep Learning Tools*: Master user of **PyTorch**, frequent user of **Tensorflow**
+2. *Deep Learning Tools*: Proficient in **PyTorch**, frequent user of **Tensorflow**

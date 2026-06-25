@@ -17,7 +17,7 @@ Algorithm Expert
 
 [Google Scholar](https://scholar.google.com/citations?user=YQPMTJsAAAAJ&hl=zh-CN) \| [GitHub](https://github.com/fyabc)
 
-[Research](/research) \| [Projects](/projects) \| [CV](/cv) \| [Blog](/blog)
+[Research](/research) \| [Projects](/projects) \| [CV](/cv) \| [Blog](/blog) \| [Hobby](/hobby)
 
 Email: [1115977374@qq.com](mailto:1115977374@qq.com)
 

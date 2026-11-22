@@ -1,8 +1,0 @@
-github_users:
-  - fyabc
-
-repo_description_lines_max: 2
-
-github_repos:
-  - fyabc/dreamulator
-  - fyabc/oort-lang

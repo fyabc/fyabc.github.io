@@ -7,4 +7,5 @@ importance: 2
 category: hobby
 redirect: https://fyabc.github.io/oort-lang/
 related_publications: false
+sitemap: false
 ---

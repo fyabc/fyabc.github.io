@@ -7,4 +7,5 @@ importance: 1
 category: hobby
 redirect: https://fyabc.github.io/dreamulator/
 related_publications: false
+sitemap: false
 ---

@@ -23,7 +23,7 @@ latest_posts:
   enabled: false
 ---
 
-I am an Algorithm Expert at [Tongyi Lab, Alibaba Group](https://tongyi.aliyun.com/), working on large language models as a member of the **Qwen** team. My work covers LLM training, fine-tuning, and data engineering, contributing to the Qwen series including [Qwen](https://arxiv.org/abs/2309.16609), [Qwen2](https://arxiv.org/abs/2407.10671), [Qwen3](https://arxiv.org/abs/2505.09388), [Qwen2-VL](https://arxiv.org/abs/2409.12191), [Qwen2.5-Omni](https://arxiv.org/abs/2503.20215), and [Qwen2.5-Coder](https://arxiv.org/abs/2409.12186).
+I am an Algorithm Expert at [Tongyi Lab, Alibaba Group](https://tongyi.aliyun.com/), working on large language models as a member of the **Qwen** team. My work covers LLM training, fine-tuning, and data engineering. I have contributed to the Qwen series from the first [Qwen](https://arxiv.org/abs/2309.16609) release through [Qwen3.5](https://qwen.ai/blog?id=qwen3.5), [Qwen3.8-Max](https://qwen.ai/blog?id=qwen3.8), and the latest [Qwen4-Max](https://www.alibabagroup.com/en-US/document-2060139246777270272) flagship, as well as multimodal models such as [Qwen2-VL](https://arxiv.org/abs/2409.12191) and [Qwen2.5-Omni](https://arxiv.org/abs/2503.20215). See the [Qwen blog](https://qwen.ai/blog) for the latest releases.
 
 Before joining Alibaba, I was a research intern at [Microsoft Research Asia](https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/) (2016–2022), mentored by [Dr. Tao Qin](https://www.microsoft.com/en-us/research/people/taoqin/). I received my Ph.D. in Computer Science from the [University of Science and Technology of China](https://en.ustc.edu.cn/) in 2022.
 

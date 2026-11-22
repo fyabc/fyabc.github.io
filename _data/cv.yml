@@ -38,8 +38,8 @@ cv:
       summary: Member of the Qwen team, working on large language model training,
         fine-tuning, and data engineering.
       highlights:
-      - 'Contributor to the Qwen series: Qwen, Qwen2, Qwen3 technical reports.'
-      - 'Contributor to Qwen multimodal models: Qwen2-VL, Qwen2.5-Omni.'
+      - 'Contributor to the Qwen series: from the first Qwen release through Qwen3.5, Qwen3.8-Max, and the Qwen4-Max flagship (2026).'
+      - 'Contributor to Qwen multimodal models: Qwen2-VL, Qwen2.5-Omni, Qwen3.5-Omni.'
       - Contributor to Qwen2.5-Coder and Qwen-AgentWorld (language world models for
         general agents).
     - company: DAMO Academy, Alibaba Group

@@ -1,0 +1,16 @@
+# Jekyll files
+_site/
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+
+# WebStorm project files
+.idea/
+
+# Visual Studio Code project files
+.vscode/
+
+# rbenv files
+Gemfile.lock
+.ruby-version

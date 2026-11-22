@@ -1,0 +1,52 @@
+---
+permalink: /404.html
+layout: default
+---
+
+<style media="screen">
+  .container {
+    margin: 10px auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  h1 {
+    margin: 30px 0;
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+</style>
+
+<div class="container">
+  <h1>404</h1>
+
+  <p><strong>Page not found :(</strong></p>
+  <p id="error-message">The requested page could not be found.</p>
+</div>
+
+<script>
+  (function () {
+    var projects = [
+      { name: 'Dreamulator', path: '/dreamulator/' },
+      { name: 'Oort', path: '/oort-lang/' }
+    ];
+    var path = window.location.pathname;
+    for (var i = 0; i < projects.length; i++) {
+      if (path.indexOf(projects[i].path) === 0) {
+        window.location.replace(projects[i].path);
+        return;
+      }
+    }
+    var header = document.querySelector('body > header');
+    if (header) { header.style.display = 'none'; }
+    var banner = document.getElementById('banner');
+    if (banner) { banner.style.display = 'none'; }
+    document.title = '404 - Page not found';
+    var links = projects.map(function (project) {
+      return '<a href="' + project.path + '">' + project.name + '</a>';
+    }).join(' | ');
+    document.getElementById('error-message').innerHTML =
+      'You may be looking for: ' + links +
+      '<br>Or visit the <a href="/">homepage</a>.';
+  })();
+</script>

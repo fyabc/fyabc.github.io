@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://fyabc.github.io/sitemap.xml

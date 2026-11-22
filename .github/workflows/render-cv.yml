@@ -1,0 +1,42 @@
+name: Render a CV
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "_data/cv.yml"
+      - ".github/workflows/render-cv.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rendercv:
+    name: RenderCV
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install RenderCV
+        run: pip install "rendercv[full]>=1.18,<2"
+      - name: RenderCV
+        run: |
+          rendercv render _data/cv.yml \
+            --pdf-path assets/pdf/Yang_Fan_CV.pdf \
+            --dont-generate-markdown --dont-generate-html --dont-generate-png
+          rm -rf rendercv_output
+      - name: Push the changes
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add assets/pdf/Yang_Fan_CV.pdf
+          if git diff --cached --quiet; then
+            echo "No CV changes to commit."
+          else
+            git commit -m "chore: render the latest CV"
+            git push
+          fi

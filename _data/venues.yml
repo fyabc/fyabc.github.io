@@ -1,0 +1,35 @@
+"arXiv":
+  url: https://arxiv.org/
+  color: "#b31b1b"
+
+"ICLR":
+  url: https://iclr.cc/
+  color: "#0d6efd"
+
+"NeurIPS":
+  url: https://neurips.cc/
+  color: "#6f42c1"
+
+"AAAI":
+  url: https://aaai.org/
+  color: "#005eb8"
+
+"ICML":
+  url: https://icml.cc/
+  color: "#198754"
+
+"WMT":
+  url: https://www2.statmt.org/wmt19/
+  color: "#fd7e14"
+
+"TASLP":
+  url: https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=6570655
+  color: "#00629b"
+
+"Bioinf.":
+  url: https://academic.oup.com/bioinformatics
+  color: "#1a5276"
+
+"ML":
+  url: https://link.springer.com/journal/10994
+  color: "#0b6e4f"

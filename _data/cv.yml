@@ -1,0 +1,100 @@
+cv:
+  name: Yang Fan
+  email: suyang.fy@alibaba-inc.com
+  location: Hangzhou, Zhejiang, China
+  social_networks:
+  - network: GitHub
+    username: fyabc
+  sections:
+    Education:
+    - institution: University of Science and Technology of China
+      location: Hefei, China
+      url: https://en.ustc.edu.cn/
+      area: Computer Science and Technology
+      studyType: Ph.D.
+      start_date: 2017-09
+      end_date: 2022-06
+      highlights:
+      - Research intern at Microsoft Research Asia during Ph.D. (2018-2022), mentored
+        by Dr. Tao Qin.
+      - 'Awards: Huawei Scholarship (2020), Bao Gang Education Scholarship (2017).'
+    - institution: University of Science and Technology of China
+      location: Hefei, China
+      url: https://en.ustc.edu.cn/
+      area: Computer Science and Technology
+      studyType: B.S.
+      start_date: 2013-09
+      end_date: 2017-06
+      highlights:
+      - Research intern at Microsoft Research Asia (2016-2017).
+      - 'Awards: National Scholarship for Encouragement (2015), Individual Scholarship
+        (2014).'
+    Experience:
+    - company: Tongyi Lab, Alibaba Group
+      position: Algorithm Expert
+      location: Hangzhou, China
+      url: https://tongyi.aliyun.com/
+      start_date: 2025-04
+      summary: Member of the Qwen team, working on large language model training,
+        fine-tuning, and data engineering.
+      highlights:
+      - 'Contributor to the Qwen series: Qwen, Qwen2, Qwen3 technical reports.'
+      - 'Contributor to Qwen multimodal models: Qwen2-VL, Qwen2.5-Omni.'
+      - Contributor to Qwen2.5-Coder and Qwen-AgentWorld (language world models for
+        general agents).
+    - company: DAMO Academy, Alibaba Group
+      position: Senior Algorithm Engineer
+      location: Hangzhou, China
+      start_date: 2022-07
+      end_date: 2025-03
+      summary: Worked on large language models, joining the Qwen effort from its first
+        release.
+      highlights:
+      - Co-author of the first Qwen technical report (2023).
+    - company: Microsoft Research Asia
+      position: Research Intern
+      location: Beijing, China
+      url: https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/
+      start_date: 2016-07
+      end_date: 2022-06
+      summary: Machine Learning Group, mentored by Dr. Tao Qin. (Jul 2016 - Jun 2017
+        and Jul 2018 - Jun 2022.)
+      highlights:
+      - 'Learning to teach: ICLR 2018, NeurIPS 2018, AAAI 2021.'
+      - 'Neural architecture search for NMT: TASLP 2020.'
+      - Championship in 8 translation tasks at WMT19.
+      - 'Back translation for molecule generation: Bioinformatics 2022.'
+    Awards:
+    - title: Championship in 8 translation tasks at WMT19
+      authors:
+      - Yang Fan
+      date: 2019-08
+      awarder: ACL Fourth Conference on Machine Translation (WMT19)
+      url: http://www.statmt.org/wmt19/translation-task.html
+      summary: Microsoft Research Asia's systems won 8 translation tasks.
+    - title: 6th place, PCQM4M-LSC prediction task
+      authors:
+      - Yang Fan
+      date: 2021-06
+      awarder: OGB Large-Scale Challenge (OGB-LSC), KDD Cup 2021
+      url: https://ogb.stanford.edu/kddcup2021/pcqm4m
+    - title: Huawei Scholarship
+      authors:
+      - Yang Fan
+      date: 2020
+      awarder: Huawei / USTC
+    - title: Bao Gang Education Scholarship
+      authors:
+      - Yang Fan
+      date: 2017
+      awarder: Bao Steel Education Foundation / USTC
+    - title: National Scholarship for Encouragement
+      authors:
+      - Yang Fan
+      date: 2015
+      awarder: Ministry of Education, China
+    - title: Individual Scholarship
+      authors:
+      - Yang Fan
+      date: 2014
+      awarder: USTC

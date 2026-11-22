@@ -1,16 +1,21 @@
-# Jekyll files
-_site/
-.sass-cache
+_site
+.bundle
+.DS_store
+.idea
 .jekyll-cache
 .jekyll-metadata
+.ruby-version
+.sass-cache
+.tweet-cache
+.venv
+assets/libs/
+rendercv_output/
+al-folio-upgrade-report.md
+node_modules/
+output/playwright/
+test-results/
 vendor
 
-# WebStorm project files
-.idea/
-
-# Visual Studio Code project files
-.vscode/
-
-# rbenv files
-Gemfile.lock
-.ruby-version
+# Python bytecode from bin/ helper scripts
+__pycache__/
+*.pyc
